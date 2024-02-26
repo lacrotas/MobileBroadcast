@@ -1,0 +1,17 @@
+.custom_button{
+    display: flex;
+    align-items: center;
+    padding: 10px 30px 10px 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 24px;
+    border:1px solid #802AEA;
+    height: 40px;
+    &:hover{
+        cursor: pointer;
+        border: 2px solid #802AEA;
+    }
+    .custom_text{
+        margin-left: 15px;
+    }
+}

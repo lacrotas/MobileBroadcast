@@ -1,0 +1,12 @@
+.city_creators{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .city_creators_container{
+        width: 390px;
+        .city_creators_paragraph{
+            margin-top: 20px;
+        }
+    }
+}

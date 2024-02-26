@@ -1,0 +1,16 @@
+.expert_filter{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 60px;
+    .expert_filter_container{
+        width: 558px;
+        .expert_filter_paragraph{
+            margin-top: 15px;
+        }
+        .expert_filter_button{
+            margin-top: 15px;
+        }
+    }
+}

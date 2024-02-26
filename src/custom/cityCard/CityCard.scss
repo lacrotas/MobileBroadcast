@@ -1,0 +1,33 @@
+.card {
+    width: 244px;
+    height: 244px;
+    border-radius: 30px;
+    position: relative;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    .card_image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card_container-hover {
+        display: none;
+        border-radius: 30px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+
+        .card_button {
+            margin-top: 102px;
+            margin-left: 45px;
+        }
+    }
+    &:hover{
+        cursor: pointer;
+        .card_container-hover{
+            display: block;
+        }
+    }
+}

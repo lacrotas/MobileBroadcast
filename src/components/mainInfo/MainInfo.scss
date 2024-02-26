@@ -1,0 +1,17 @@
+.main_info {
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .main_info_container {
+        width: 570px;
+        .container_paragraph{
+            margin-top: 15px;
+        }
+        .container_button{
+            margin-top: 15px;
+        }
+    }
+}

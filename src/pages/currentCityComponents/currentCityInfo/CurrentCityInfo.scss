@@ -1,0 +1,25 @@
+.current_city{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    position: relative;
+    .current_city_image-logo{
+        width: 400px;
+        height: 400px;
+    }
+    .current_city_text{
+        width: 780px;
+        .city_text_paragraph{
+            margin-top: 15px;
+        }
+        .city_text_button{
+            margin-top: 30px;
+        }
+    }
+    .current_city_image-back{
+        position: relative;
+        bottom: 170px;
+    }
+}

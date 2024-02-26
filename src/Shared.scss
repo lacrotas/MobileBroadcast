@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body section {
+  margin-top: 50px;
+}
+
+@font-face {
+  font-family: "Jura_med";
+  src: url("./assets/fonts/Jura-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Jura_bold";
+  src: url("./assets/fonts/Jura-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Montserat_reg";
+  src: url("./assets/fonts/Montserrat-Regular.ttf");
+}
+
+/*text*/
+.paragraph_text {
+  font-family: "Montserat_reg";
+  font-size: 20px;
+}
+
+.h3_text {
+  font-size: 36px;
+}
+
+.h2_text {
+  font-size: 48px;
+}
+
+.h2_text,
+.h3_text {
+  color: #000;
+  font-family: "Jura_bold";
+}
+
+.app {
+  .app_content {
+    width: calc(100% - 100px);
+    margin-left: 50px;
+  }
+}
+
+.button {
+  font-family: "Jura_med";
+  font-size: 17px;
+  color: #fff;
+  background-color: #802aea;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 30px;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+}
