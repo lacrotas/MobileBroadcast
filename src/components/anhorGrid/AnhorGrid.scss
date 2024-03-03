@@ -1,4 +1,8 @@
 .anhor_grid{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+    .anhor_card{
+        justify-self: center;
+    }
 }

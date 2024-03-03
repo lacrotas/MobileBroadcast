@@ -2,7 +2,8 @@
     font-family: "Jura_Bold";
     src: url(../../assets/fonts/Jura-Bold.ttf);
 }
-.header{
+
+.header {
     position: fixed;
     display: flex;
     z-index: 10;
@@ -12,29 +13,97 @@
     justify-content: space-between;
     background-color: #fff;
     top: 0;
-    .header_logo{
+
+    .header_container-small {
+        display: none;
+    }
+
+    .header_logo {
         width: 58px;
         height: 40px;
     }
-    .header_container{
+
+    .header_container {
         display: flex;
         align-items: center;
-        .navigation_item{
-            font-size: 16px;
-            font-family: 'Jura_reg';
-            display: inline;
-            color: #000;
-            margin-right: 30px;
-            &:last-child{
-                margin-right: 50px;
+
+        .container_navigation {
+            .navigation_item {
+                font-size: 16px;
+                font-family: 'Jura_reg';
+                display: inline;
+                color: #000;
+                margin-right: 30px;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
-            &:hover{
-                cursor: pointer;
+        }
+
+    }
+}
+
+@font-face {
+    font-family: 'Jura_reg';
+    src: url('../../assets/fonts/Jura-Regular.ttf');
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        .header_container {
+            .container_navigation {
+                .navigation_item {
+                    margin-right: 15px;
+                }
             }
         }
     }
 }
-@font-face {
-    font-family: 'Jura_reg';
-    src: url('../../assets/fonts/Jura-Regular.ttf');
+
+@media screen and (max-width: 760px) {
+    .header {
+        width: calc(100% - 40px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .header {
+        width: calc(100% - 40px);
+
+        .header_container {
+            display: none;
+        }
+
+        .header_container-small {
+            display: block;
+
+            .burger_container {
+                position: fixed;
+                width: 300px;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // right: -300px;s
+                right: 0px;
+                height: calc(100vh - 80px);
+                top: 80px;
+                transition: all 0.3s ease-out;
+                .container_navigation {
+                    .navigation_item {
+                        font-size: 16px;
+                        font-family: 'Jura_reg';
+                        color: #000;
+                        margin-bottom: 30px;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

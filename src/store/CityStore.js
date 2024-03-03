@@ -10,7 +10,7 @@ export default class CityStore {
         this._cityes = city;
     }
     
-    get user() {
-        return this._user;
+    get city() {
+        return this._cityes;
     }
 }

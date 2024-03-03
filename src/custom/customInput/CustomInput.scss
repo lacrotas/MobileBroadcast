@@ -10,10 +10,11 @@
     .custom_input {
         font-size: 24px;
         padding: 10px 30px 10px 65px;
-        height: 40px;
+        height: 30px;
         border: 1px solid #802AEA;
         border-radius: 30px;
         font-family: "Jura_med";
+
         &:focus {
             outline: 2px solid #802AEA;
         }
@@ -22,11 +23,31 @@
             cursor: pointer;
             outline: 2px solid #802AEA;
         }
+
+    }
+    .custom_image {
+        position: absolute;
+        top: 7px;
+        width: 38px;
+        height: 38px;
+        left: 10px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .custom_input-container .custom_input {
+        font-size: 20px;
+        padding: 5px 5px 5px 45px;
+    }
+
+    .custom_text {
+        margin-left: 10px;
     }
 
     .custom_image {
-        position: absolute;
-        top: 10px;
-        left: 10px;
+        width: 30px;
+        height: 30px;
+        top: 15px;
+        left: 5px;
     }
 }

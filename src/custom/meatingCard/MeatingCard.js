@@ -7,7 +7,7 @@ import { fetchOneCity } from "../../http/cityApi";
 function MeatingCard({ location, data, time, cityId }) {
     const [city, setCity] = useState();
     const dataArr = data.split(".");
-    const myData = dataArr[0]+" " + setDataName(dataArr[1]);
+    const myData = dataArr[0] + " " + setDataName(dataArr[1]);
 
     function setDataName(number) {
         switch (number) {
@@ -35,11 +35,13 @@ function MeatingCard({ location, data, time, cityId }) {
                 return "ноября"
             case "12":
                 return "декабря"
+            default:
+                return "января";
         }
     }
     useEffect(() => {
         fetchOneCity(cityId).then(data => setCity(data));
-    }, []);
+    }, [cityId]);
 
     return (
         <div className="meating_card">

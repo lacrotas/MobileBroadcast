@@ -13,8 +13,10 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+
     .meating_container-text {
         width: 280px;
+
         .meating_label-offline {
             background-color: #802AEA;
             width: 100px;
@@ -40,30 +42,25 @@
             display: flex;
             align-items: center;
             margin-top: 10px;
-            .paragraph_text{
+
+            .paragraph_text {
                 margin-left: 10px;
             }
         }
     }
-    .meating_image{
+
+    .meating_image {
         width: 200px;
     }
-    // &:hover{
-    //     .meating_container-hover{
-    //         display: flex;
-    //         align-items: center;
-    //         justify-content: center;
-    //     }
-    // }
 }
 
-// .meating_container-hover {
-//     position: absolute;
-//     display: none;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     border-radius: 30px;
-//     background-color: rgba($color: #000000, $alpha: 0.5);
-// }
+@media screen and (max-width: 650px) {
+    .meating_card {
+        width: 300px;
+        padding: 15px;
+    }
+
+    .meating_card .meating_image {
+        display: none;
+    }
+}

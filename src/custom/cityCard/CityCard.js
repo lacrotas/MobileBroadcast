@@ -6,7 +6,7 @@ function CityCard({ img }) {
     return (
         <NavLink to={CITY_ROUTE + "/1"}>
             <section className="card">
-                <img className="card_image" src={img} alt="city logo" />
+                <img className="card_image" src={process.env.REACT_APP_API_URL + img} alt="city logo" />
                 <div className="card_container-hover">
                     <button className="card_button button">Подробней</button>
                 </div>

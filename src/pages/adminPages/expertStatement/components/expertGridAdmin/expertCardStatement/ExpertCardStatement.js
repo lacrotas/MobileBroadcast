@@ -5,18 +5,19 @@ import NavigationImage from "../../../../../../assets/images/location.svg";
 import mailImage from "../../../../../../assets/images/mail_circle.svg";
 import telegramImage from "../../../../../../assets/images/telegram_circle.svg";
 
-function ExpertCardStatement({ name, city, link, technology, about }) {
+function ExpertCardStatement({ name, city, links, technologies, aboutText }) {
     const [isCardOpen, setIsCardOpen] = useState(false);
-
+    const technology = technologies.split('/');
+    // const link = links
     return (
         <div>
 
             <div className="expert_statement_card-close" onClick={() => { setIsCardOpen(true) }}>
                 <h3 className="expert_statement_card_label h3_text">{city}</h3>
-                <p className="expert_statement_card_paragraph paragraph_text">{about}</p>
+                <p className="expert_statement_card_paragraph paragraph_text">{aboutText}</p>
                 <img className="expert_statement_card_image" src={CardLinkImage} alt="card link" />
             </div>
-            
+
             {isCardOpen &&
                 <div className="expert_statement_card-open">
                     <div className="expert_statement_card_container">
@@ -39,13 +40,13 @@ function ExpertCardStatement({ name, city, link, technology, about }) {
                                 <p className="paragraph_text">{city}</p>
                             </div>
                         </div>
-                        <p className="expert_statement_card_paragraph paragraph_text">{about}</p>
+                        <p className="expert_statement_card_paragraph paragraph_text">{aboutText}</p>
                         <div className="container_expert_statement_buttons">
                             <button className="expert_statement_button button">Отклонить</button>
                             <button className="expert_statement_button button">Одобрить</button>
                         </div>
                     </div>
-                    <div className="expert_statement_card-open_back" onClick={()=>setIsCardOpen(false)}></div>
+                    <div className="expert_statement_card-open_back" onClick={() => setIsCardOpen(false)}></div>
                 </div>
             }
         </div >

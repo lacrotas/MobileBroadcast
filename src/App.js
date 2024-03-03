@@ -6,22 +6,22 @@ import ModalWindow from "./custom/modalWindow/ModalWindow";
 import { BrowserRouter } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "./index";
-import { check } from "./http/userApi";
+// import { check } from "./http/userApi";
 
 const App = observer(() => {
   const [openModel, setOpenModal] = useState(false);
 
-  const { user } = useContext(Context);
-  const [loading, setLoading] = useState(true);
+  // const { user } = useContext(Context);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
-      check().then(data => {
-        user.setUser(true)
-        user.setIsAuth(true)
-      }).finally(() => setLoading(false))
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (localStorage.getItem('token') !== null) {
+  //     check().then(data => {
+  //       user.setUser(true)
+  //       user.setIsAuth(true)
+  //     }).finally(() => setLoading(false))
+  //   }
+  // }, [])
 
   return (
     <div className="app">

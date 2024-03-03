@@ -6,7 +6,20 @@ import MailImage from "../../assets/images/fluent_mail-24-regular.svg";
 function Footer() {
     return (
         <footer className="footer">
-            <img className="footer_image" src={LogoImage} alt="logo" />
+            <div className="footer_container_image">
+                <div className="container_contacts container_contacts-small">
+                    <h3 className="contacts_label h3_text">Контакты</h3>
+                    <div className="contacts_container">
+                        <img className="contacts_image" src={TelegramImage} alt="telegram" />
+                        <p className="contacts_paragraph paragraph_text">@mobile_broadcast_news</p>
+                    </div>
+                    <div className="contacts_container">
+                        <img className="contacts_image" src={MailImage} alt="telegram" />
+                        <p className="contacts_paragraph paragraph_text">info.Mobilebroadcast@gmail.com</p>
+                    </div>
+                </div>
+                <img className="footer_image" src={LogoImage} alt="logo" />
+            </div>
             <div className="footer_container">
                 <div className="container_creators">
                     <h3 className="creators_label h3_text">Основатели</h3>
@@ -17,7 +30,7 @@ function Footer() {
                             MBE по Android, блогер, основатель Android Broadcast</p>
                     </div>
                 </div>
-                <div className="container_contacts">
+                <div className="container_contacts container_contacts-big">
                     <h3 className="contacts_label h3_text">Контакты</h3>
                     <div className="contacts_container">
                         <p className="contacts_paragraph paragraph_text">@mobile_broadcast_news</p>

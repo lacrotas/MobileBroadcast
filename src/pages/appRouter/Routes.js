@@ -1,10 +1,10 @@
-import MainPage from "../MainPage";
+import MainPage from "../userPages/MainPage";
 import { MAIN_ROUTE, CITY_ROUTE, EXPERT_ROUTE, MEATING_ROUTE, EXPERT_ADMIN_ROUTE, ADMIN_MAIN_ROUTE, CITY_ADMIN_ROUTE, MEATING_ADMIN_ROUTE, ADD_ADMIN_ROUTE } from './Const';
-import CurrentCityInfo from "../currentCityComponents/currentCityInfo/CurrentCityInfo";
-import CityChoosePage from "../CityChoosePage";
-import ExpertChoosePage from "../ExpertChoosePage";
-import MeatingPage from "../MeatingPage";
-import CurrentExpertInfo from "../CurrentExpertInfo";
+import CurrentCityPage from "../userPages/cityPage/CurrentCityPage";
+import CityChoosePage from "../userPages/cityPage/CityChoosePage";
+import ExpertChoosePage from "../userPages/expertPage/ExpertChoosePage";
+import MeatingPage from "../userPages/meatingPage/MeatingPage";
+import CurrentExpertInfo from "../userPages/expertPage/CurrentExpertInfo";
 import ExpertStatementPage from "../adminPages/expertStatement/ExpertStatementPage";
 import AdminMainPage from "../adminPages/adminMainPage/AdminMainPage";
 import CityStatement from "../adminPages/cityStatement/CityStatement";
@@ -20,7 +20,7 @@ export const publicRoutes = [
     },
     {
         path: CITY_ROUTE + '/:id',
-        Component: CurrentCityInfo
+        Component: CurrentCityPage
     },
     {
         path: EXPERT_ROUTE,

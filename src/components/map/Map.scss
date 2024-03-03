@@ -1,0 +1,125 @@
+.modal_map_svg {
+    background-color: #fff;
+    width: 80%;
+    height: auto;
+    position: relative;
+    z-index: 20;
+    border-radius: 20px;
+
+    .modal_map_setting {
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+
+    .modal_map_setting-second {
+        margin-top: 30px;
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100% - 60px);
+
+        .modal_map_setting_input {
+            font-size: 24px;
+            height: 40px;
+        }
+
+        .image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .input_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .input {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .modal_map_setting-third {
+        padding: 30px;
+
+        .container_label {
+            display: flex;
+            align-items: center;
+
+            .image {
+                width: 30px;
+                height: 30px;
+            }
+
+            h3 {
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        .container_city {
+            margin-top: 10px;
+
+            input {
+                padding: 10px;
+                border-radius: 10px;
+                margin-right: 30px;
+            }
+        }
+
+        .container_galarry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+
+            .gallary_item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input {
+                    width: 300px;
+                }
+            }
+        }
+
+        .container_organizator {
+            margin-bottom: 20px;
+
+            .organizator_item {
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                input {
+                    width: 300px;
+                    height: 40px;
+                    border-radius: 10px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+
+    svg {
+        width: 80%;
+        height: auto;
+        margin-left: 10%;
+
+        path {
+            &:hover {
+                stroke-width: 1px;
+                stroke: black;
+                cursor: pointer;
+            }
+        }
+    }
+}
