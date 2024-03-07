@@ -1,18 +1,18 @@
 import { $authHost, $host } from "./index";
 import jwt_decode from "jwt-decode";
 
-export const fetchExperts = async() => {
+export const fetchExperts = async () => {
     const { data } = await $host.get('api/expert/getAll');
     return data;
 }
 export const fetchOneExpert = async (id) => {
-    const {data} = await $host.get('api/expert/' + id)
+    const { data } = await $host.get('api/expert/' + id)
     return data
 }
-// export const createType = async (type) => {
-//     const {data} = await $authHost.post('api/type', type)
-//     return data
-// }
+export const createExpert = async (expert) => {
+    const { data } = await $authHost.post('api/expert/addExpert', expert)
+    return data
+}
 
 // export const fetchTypes = asysnc () => {
 //     const {data} = await $host.get('api/type')

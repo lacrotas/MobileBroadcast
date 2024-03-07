@@ -10,10 +10,9 @@
     font-family: "Jura_med";
     border-radius: 30px;
     position: relative;
-
     &:hover {
         cursor: pointer;
-        border: 2px solid #802AEA;
+        box-shadow: 0 0 0 3px #802AEA;
     }
 
     .custom_text {
@@ -27,6 +26,7 @@
 
     .custom_button-container {
         position: absolute;
+        z-index: 9;
         top: 20px;
         left: 0;
         width: 100%;

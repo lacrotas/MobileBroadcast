@@ -5,29 +5,67 @@ import { EXPERT_ROUTE } from "../../pages/appRouter/Const";
 import { fetchOneCity } from "../../http/cityApi";
 import { useState, useEffect } from "react";
 
-function ExpertCard({ id, name, image, aboutText, sex, articles, technologies, cityId, link, meatingId }) {
+function ExpertCard({ id, name, image, aboutText, sex, articles, technologies, cityId, link, meatingId, cityFilter, tehnologyFilter, nameFilter }) {
     const stack = technologies.split("/");
     const [city, setCity] = useState();
     useEffect(() => {
-        fetchOneCity(id).then(data => setCity(data));
+        fetchOneCity(cityId).then(data => setCity(data));
     }, []);
+
+    function checkTechnology() {
+        for (let i = 0; i < stack.length; i++) {
+            if (stack[i] === tehnologyFilter) {
+                return true;
+            }
+        }
+
+        if (tehnologyFilter && tehnologyFilter != "") {
+            return false
+        } else {
+            return true;
+        }
+    }
+
+    function checkCity() {
+        if (((cityFilter === "" || !cityFilter) || cityFilter === city.name) && checkTechnology() && checkName()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function checkName() {
+        if (nameFilter && nameFilter != "") {
+            if (name.toLowerCase().includes(nameFilter.toLowerCase())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
     return (
-        <NavLink to={EXPERT_ROUTE + "/" + id}>
-            <section className="expert">
-                <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
-                <p className="expert_label paragraph_text">{name}</p>
-                <div className="expert_container-location">
-                    <img src={LocationImage} alt="location" />
-                    <p className="location_paragraph paragraph_text">{(city) ? city.name : null}</p>
-                </div>
-                <div className="expert_container-stack">
-                    {stack.map((technology, index) => (<p className={"stack_paragraph paragraph_text" + " stack_paragraph" + index} key={index}>#{technology}</p>))}
-                </div>
-                <div className="expert_container-hover">
-                    <button className="expert_button button">Подробней</button>
-                </div>
-            </section>
-        </NavLink>
+        <>
+            {(city && checkCity()) ?
+                <NavLink to={EXPERT_ROUTE + "/" + id}>
+                    <section className="expert">
+                        <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
+                        <p className="expert_label paragraph_text">{name}</p>
+                        <div className="expert_container-location">
+                            <img src={LocationImage} alt="location" />
+                            <p className="location_paragraph paragraph_text">{(city) ? city.name : null}</p>
+                        </div>
+                        <div className="expert_container-stack">
+                            {stack.map((technology, index) => (<p className={"stack_paragraph paragraph_text" + " stack_paragraph" + index} key={index}>#{technology}</p>))}
+                        </div>
+                        <div className="expert_container-hover">
+                            <button className="expert_button button">Подробней</button>
+                        </div>
+                    </section>
+                </NavLink> :
+                <></>
+            }
+        </>
     );
 }
 

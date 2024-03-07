@@ -4,24 +4,27 @@ import CityCard from "../../../custom/cityCard/CityCard.js";
 import { Context } from "../../../index.js";
 import { fetchCityes } from "../../../http/cityApi.js";
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const CityChoosePage = observer(() => {
-    const { cities } = useContext(Context);
-
+    const [cities, setCities] = useState();
     useEffect(() => {
-        fetchCityes().then(data => cities.setCity(data));
+        fetchCityes().then(data => setCities(data));
     }, []);
-
+    const [country, setCountry] = useState();
+    const [cityName, setCityName] = useState();
     return (
         <div className="city_choose_page">
-            <CityFilterInfo />
-            {/* <CityGrid /> */}
-            <div className="city_grid">
-                {cities._cityes.map((item, index) => (
-                    <CityCard key={index} img={item.image} />
-                ))}
-            </div>
+            <CityFilterInfo setCountry={setCountry} setCityName={setCityName} />
+            {cities ?
+                <div className="city_grid">
+                    {cities.map((item, index) => (
+                        <CityCard key={index} item={item} countryFilter={country} nameFilter={cityName} />
+                    ))}
+                </div>
+                :
+                <></>
+            }
         </div>
     );
 })

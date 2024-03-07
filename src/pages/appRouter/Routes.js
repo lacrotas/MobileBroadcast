@@ -1,14 +1,20 @@
 import MainPage from "../userPages/MainPage";
-import { MAIN_ROUTE, CITY_ROUTE, EXPERT_ROUTE, MEATING_ROUTE, EXPERT_ADMIN_ROUTE, ADMIN_MAIN_ROUTE, CITY_ADMIN_ROUTE, MEATING_ADMIN_ROUTE, ADD_ADMIN_ROUTE } from './Const';
+import {
+    MAIN_ROUTE, CITY_ROUTE, EXPERT_ROUTE,
+    MEATING_ROUTE, EXPERT_ADMIN_ROUTE, ADMIN_MAIN_ROUTE,
+    CITY_ADMIN_ROUTE, MEATING_ADMIN_ROUTE, ADD_ADMIN_ROUTE,
+    MEATING_ADD_ADMIN_ROUTE, COUNTRY_ADMIN_ROUTE
+} from './Const';
 import CurrentCityPage from "../userPages/cityPage/CurrentCityPage";
 import CityChoosePage from "../userPages/cityPage/CityChoosePage";
 import ExpertChoosePage from "../userPages/expertPage/ExpertChoosePage";
 import MeatingPage from "../userPages/meatingPage/MeatingPage";
 import CurrentExpertInfo from "../userPages/expertPage/CurrentExpertInfo";
-import ExpertStatementPage from "../adminPages/expertStatement/ExpertStatementPage";
 import AdminMainPage from "../adminPages/adminMainPage/AdminMainPage";
-import CityStatement from "../adminPages/cityStatement/CityStatement";
-
+import AdminMeatingPage from "../adminPages/adminMeatingPage/AdminMeatingPage";
+import AdminCityPage from "../adminPages/adminCityPage/AdminCityPage";
+import AdminCountryPage from "../adminPages/adminCountryPage/AdminCountryPage";
+import AdminExpertPage from "../adminPages/adminExpertPage/AdminExpertPage";
 export const publicRoutes = [
     {
         path: MAIN_ROUTE,
@@ -42,20 +48,24 @@ export const adminRoutes = [
         Component: MainPage
     },
     {
+        path: EXPERT_ADMIN_ROUTE,
+        Component: AdminExpertPage
+    },
+    {
         path: ADMIN_MAIN_ROUTE,
         Component: AdminMainPage
-    }, 
+    },
     {
-        path: EXPERT_ADMIN_ROUTE,
-        Component: ExpertStatementPage
+        path: COUNTRY_ADMIN_ROUTE,
+        Component: AdminCountryPage
     },
     {
         path: CITY_ADMIN_ROUTE,
-        Component: CityStatement
+        Component: AdminCityPage
     },
     {
         path: MEATING_ADMIN_ROUTE,
-        Component: MainPage
+        Component: AdminMeatingPage
     },
     {
         path: ADD_ADMIN_ROUTE,

@@ -19,6 +19,7 @@
 
     .city_filter_buttons {
         display: flex;
+        gap: 20px;
     }
 }
 
@@ -35,6 +36,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+            gap: 0;
         }
     }
 }

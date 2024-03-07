@@ -9,7 +9,9 @@ export const MEATING_ROUTE = '/meating';
 export const ADMIN_MAIN_ROUTE = '/admin';
 export const EXPERT_ADMIN_ROUTE = '/admin/expert';
 export const CITY_ADMIN_ROUTE = '/admin/city';
+export const COUNTRY_ADMIN_ROUTE = '/admin/country';
 export const MEATING_ADMIN_ROUTE = '/admin/meating';
+export const MEATING_ADD_ADMIN_ROUTE = '/admin/meating/add';
 export const REDUCT_EXPERT_ADMIN_ROUTE = '/admin/reduct';
 export const ADD_ADMIN_ROUTE = '/admin/add';
 

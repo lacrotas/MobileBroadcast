@@ -1,7 +1,7 @@
 import "./MeatingFilter.scss";
 import CustomInput from "../../../../../custom/customInput/CustomInput";
 
-function MeatingFilter() {
+function MeatingFilter({setMeatingFilter}) {
     return (
         <section className="expert_filter">
             <div className="expert_filter_container">
@@ -9,7 +9,7 @@ function MeatingFilter() {
                 <p className="expert_filter_paragraph paragraph_text">Даннная страница содержит список встреч нашего сообщества</p>
             </div>
             <div className="expert_filter_buttons">
-                <CustomInput pl={"Поиск по названию"} />
+                <CustomInput setText={setMeatingFilter} pl={"Поиск по городу"} />
             </div>
         </section>
     );
