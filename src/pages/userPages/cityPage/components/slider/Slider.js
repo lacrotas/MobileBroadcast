@@ -1,16 +1,23 @@
 import "./Slider.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Slider({ imgArr }) {
     const [currentSlide, setCurrentSlide] = useState(Math.round(imgArr.length / 2) - 1);
-    
-    // setInterval(() => {
-    //     setCurrentSlide();
-    // }, 3000);
-    
-    // function checkIndex(index){
-        
-    // }
+    const sliderLength = imgArr.length;
+
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         setCurrentSlide((prevcurrentSlide)=>(prevcurrentSlide +1) % sliderLength);
+    //     }, 4000);
+
+    //     return () => clearInterval(intervalId);
+    // }, []);
+
+    function setNewSlide() {
+        setCurrentSlide(currentSlide => (currentSlide + 1) % imgArr.length - 1);
+        setTimeout(setNewSlide, 1000);
+        console.log(currentSlide);
+    }
 
     return (
         <section className="slider">
@@ -21,7 +28,7 @@ function Slider({ imgArr }) {
                             : (currentSlide - 2 === index) ? "slider_image_third slider_image_pre_pre"
                                 : (currentSlide + 1 === index) ? "slider_image_third slider_image_next"
                                     : (currentSlide + 2 === index) ? "slider_image_third slider_image_next_next"
-                                        : "slider_image"} src={item} alt="slider image" key={index} />
+                                        : "slider_image"} src={process.env.REACT_APP_API_URL + item.file} alt="slider image" key={index} />
                 ))}
             </div>
             <div className="slider_bar">

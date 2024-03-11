@@ -10,38 +10,31 @@ export const fetchOneExpert = async (id) => {
     return data
 }
 export const createExpert = async (expert) => {
-    const { data } = await $authHost.post('api/expert/addExpert', expert)
+    const { data } = await $host.post('api/expert/addExpert', expert)
     return data
 }
 
-// export const fetchTypes = asysnc () => {
-//     const {data} = await $host.get('api/type')
-//     return data
-// }
-
-// export const createBrand = async (brand) => {
-//     const {data} = await $authHost.post('api/brand', brand)
-//     return data
-// }
-
-// export const fetchBrands = async () => {
-//     const {data} = await $host.get('api/brand', )
-//     return data
-// }
-
-// export const createDevice = async (device) => {
-//     const {data} = await $authHost.post('api/device', device)
-//     return data
-// }
-
-// export const fetchDevices = async (typeId, brandId, page, limit= 5) => {
-//     const {data} = await $host.get('api/device', {params: {
-//             typeId, brandId, page, limit
-//         }})
-//     return data
-// }
-
-// export const fetchOneDevice = async (id) => {
-//     const {data} = await $host.get('api/device/' + id)
-//     return data
-// }
+export const deleteOneExpert = async (id) => {
+    if (!id) {
+        return null;
+    } else {
+        const { data } = await $host.delete('api/expert/delete/' + id)
+        return data;
+    }
+}
+export const updateOneExpert= async (id, item) => {
+    if (!id) {
+        return null;
+    } else {
+        const { data } = await $host.put('api/expert/update/' + id, item)
+        return data;
+    }
+}
+export const deleteExpertsByCityId = async (id) => {
+    if (!id) {
+        return null;
+    } else {
+        const { data } = await $host.delete('api/expert/deleteByCityId/' + id)
+        return data;
+    }
+}

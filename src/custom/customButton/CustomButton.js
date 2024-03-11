@@ -3,13 +3,16 @@ import SelectImage from "../../assets/images/select.svg";
 import { useState, useEffect } from "react";
 import { fetchCityes, fetchCountries } from "../../http/cityApi";
 
-function CustomButton({ setValue, defaultValue, type, isFullObject }) {
+function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue }) {
   const [selectedValue, setSelectedValue] = useState(defaultValue);
   const [isOpen, setIsOpen] = useState(false);
   const [selectValues, setSelectValues] = useState();
   useEffect(() => {
     if (type === "city") {
       fetchCityes().then(data => setSelectValues(data));
+      if(choosenValue){
+        setSelectValues(choosenValue.name);
+      }
     } else if (type === "tehnology") {
       setSelectValues([
         { name: "Android" }, { name: "Aurora OS" }, { name: "Flutter" },

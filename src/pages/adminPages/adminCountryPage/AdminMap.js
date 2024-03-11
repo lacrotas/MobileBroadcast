@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { MAP_PATH } from "../../../components/map/mapPath";
 import BackImage from "../../../assets/images/arrowBack.svg";
-import { createCountry, fetchCountries, deleteOneCountry, updateOneCountry } from "../../../http/cityApi";
+import { createCountry, fetchCountries, deleteOneCountry, updateOneCountry, fetchAllCityByContry, deleteOneCity } from "../../../http/cityApi";
+import { deleteExpertsByCityId } from "../../../http/expertApi";
+import { deleteMeatingsByCityId } from "../../../http/meatingApi";
 
 function AdminMap({ setAddMeating }) {
     const [step, setStep] = useState(1);
@@ -13,10 +15,10 @@ function AdminMap({ setAddMeating }) {
     const [currentCountryIndex, setCurrentCountryIndex] = useState();
     /*all country */
     const [allCountry, setAllCountry] = useState([]);
+
     useEffect(() => {
         fetchCountries().then(data => setAllCountry(data));
     }, []);
-
     function checkCountryOnStyle(index) {
         for (let i = 0; i < allCountry.length; i++) {
             if (index === allCountry[i].countryIndex) {
@@ -58,10 +60,10 @@ function AdminMap({ setAddMeating }) {
 
     function addCountry() {
         if (countryName && backColor && strokeColor && currentCountry) {
-        createCountry({ name: countryName, bgColor: backColor, strokeColor: strokeColor, countryIndex: currentCountry });
-        alert("Страна успешно добавлена");
-        window.location.reload();
-        }else{
+            createCountry({ name: countryName, bgColor: backColor, strokeColor: strokeColor, countryIndex: currentCountry });
+            alert("Страна успешно добавлена");
+            window.location.reload();
+        } else {
             alert("Вы не заполнили все поля");
         }
     }
@@ -75,12 +77,20 @@ function AdminMap({ setAddMeating }) {
         }
     }
     function deleteCountry() {
-        const result = prompt("Для удаления страны введите слово \"да\"", []);
+        const result = prompt("Если вы удалите страну удаляться все города, эксперты, сообщества, встречи связанные с этой страной? Если уверены введите слово \"да\"", []);
         if (result === "да") {
+            deleteAllRelations()
             deleteOneCountry(currentCountryIndex);
             alert("Страна удалена");
             window.location.reload();
         }
+    }
+    function deleteAllRelations() {
+        fetchAllCityByContry(currentCountryIndex).then(data => {
+            data.map((item) => deleteExpertsByCityId(item.id))
+            data.map((item) => deleteMeatingsByCityId(item.id))
+            data.map((item) => deleteOneCity(item.id))
+        });
     }
 
     return (

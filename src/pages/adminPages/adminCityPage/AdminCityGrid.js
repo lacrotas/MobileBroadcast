@@ -10,7 +10,7 @@ export default function AdminCityGrid({ setAddMeating, nameFilter, countryFilter
     return (
         <div className="city_grid">
             {cities.map((item, index) => (
-                <CityCard countryFilter={countryFilter} nameFilter={nameFilter} key={index} item={item} />
+                <CityCard isAdmin={true} countryFilter={countryFilter} nameFilter={nameFilter} key={index} item={item} />
             ))}
             <button className="button city_grid_button" onClick={() => setAddMeating(true)}>Добавить сообщество</button>
         </div>

@@ -18,8 +18,9 @@ function CurrentExpertInfo() {
             {expert ?
                 <>
                     <CurrentExpertPerson name={expert.name} image={expert.image} aboutText={expert.aboutText}
-                        sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId} link={expert.link} />
-                    <CurrentExpertArticles articles={expert.articles} />
+                        sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId}
+                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail} />
+                    <CurrentExpertArticles expertId={expert.id} />
                     <CurrentExpertMeatings id={expert.meatingId} />
                 </>
                 : <></>}

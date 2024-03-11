@@ -8,14 +8,16 @@ import CustomInputFile from "../../../../custom/customInputFile/CustomInputFile"
 import CustomButton from "../../../../custom/customButton/CustomButton";
 
 function CurrentExpertPerson({ setBack }) {
-    const [image, setImage] = useState(WomenAvatar);
-    const [stack, setStack] = useState([""]);
+    const [image, setImage] = useState(MenAvatar);
     const [city, setCity] = useState();
     /*values */
     const [name, setName] = useState();
+    const [sex, setSex] = useState("men");
     const [aboutText, setAboutText] = useState();
     const [email, setEmail] = useState();
     const [telegram, setTelegram] = useState();
+    const [selectedImage, setSelectedImage] = useState();
+    const [stack, setStack] = useState([""]);
 
     const removeItem = (indexToRemove) => {
         setStack(prevArray => {
@@ -23,14 +25,16 @@ function CurrentExpertPerson({ setBack }) {
             return newArray;
         });
     };
-
     function handleTehnologyAdd(e, index) {
         let newStack = stack;
         stack[index] = e;
         setStack(newStack);
     }
-    const [selectedImage, setSelectedImage] = useState();
-
+    function handleChangeImageDefault(sex, image) {
+        setSex(sex);
+        setSelectedImage(undefined);
+        setImage(image);
+    }
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         setSelectedImage(file);
@@ -45,7 +49,6 @@ function CurrentExpertPerson({ setBack }) {
             setImage(null);
         }
     };
-
     function addExpert() {
         let stackTehnology = "";
         for (let i = 0; i < stack.length; i++) {
@@ -54,22 +57,28 @@ function CurrentExpertPerson({ setBack }) {
                 stackTehnology += "/";
             }
         }
-        const links = telegram ? telegram + "/" + email : email;
         if (name && aboutText && stackTehnology && city) {
-            // const formData = new FormData()
-            // formData.append('name', name)
-            // formData.append('aboutText', aboutText)
-            // formData.append('image', selectedImage)
-            // formData.append('technologies', stackTehnology)
-            // formData.append('cityId', city.id)
-            // formData.append('link', links)
-            // createExpert(formData);
-            alert("Нужно подправить насчет загрузки стандартных файлов");
-            // window.location.reload();
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('aboutText', aboutText);
+            formData.append('image', selectedImage);
+            formData.append('technologies', stackTehnology);
+            formData.append('cityId', city.id);
+            if (telegram) {
+                formData.append('linkTelegram', telegram);
+            }
+            if (email) {
+                formData.append('linkMail', email);
+            }
+            formData.append('sex', sex);
+            createExpert(formData);
+            alert("Эксперт успешно добален");
+            window.location.reload();
         } else {
             alert("Заполните все поля");
         }
     }
+
     return (
         <div className="current_expert_page">
             <section className="expert_person">
@@ -96,8 +105,8 @@ function CurrentExpertPerson({ setBack }) {
                         <img className="expert_person_image" src={image} alt="logo" />
                         <div className="expert_person_container">
                             <div className="container_sex">
-                                <p onClick={() => setImage(MenAvatar)}>Мужской</p>
-                                <p onClick={() => setImage(WomenAvatar)}>Женский</p>
+                                <p className="paragraph_text" style={{ fontWeight: sex === "men" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("men", MenAvatar)}>Мужской</p>
+                                <p className="paragraph_text" style={{ fontWeight: sex === "women" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("women", WomenAvatar)}>Женский</p>
                             </div>
                             <CustomInputFile handleImageChange={handleImageChange} />
                         </div>

@@ -1,25 +1,59 @@
-.current_city{
+.current_city {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 50px;
     position: relative;
-    .current_city_image-logo{
+
+    .current_city_image-logo {
         width: 400px;
         height: 400px;
     }
-    .current_city_text{
+
+    .current_city_text {
         width: 780px;
-        .city_text_paragraph{
+
+        .city_text_paragraph {
             margin-top: 15px;
         }
-        .city_text_button{
+
+        .city_text_button {
             margin-top: 30px;
         }
     }
-    .current_city_image-back{
+
+    .current_city_image-back {
         position: relative;
         bottom: 170px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .current_city {
+        .current_city_image-logo {
+            width: 250px;
+            height: 250px;
+        }
+        .current_city_image-back {
+            bottom: 120px;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .current_city {
+        flex-direction: column;
+        align-items: flex-start;
+        .current_city_image-logo {
+            width: 250px;
+            height: 250px;
+        }
+        .current_city_image-back {
+            bottom: 0px;
+            float: left;
+        }
+        .current_city_text{
+            width: 100%;
+        }
     }
 }

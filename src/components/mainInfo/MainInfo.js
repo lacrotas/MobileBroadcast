@@ -12,8 +12,7 @@ function MainInfo() {
       <div className="main_info_container">
         <h2 className="container_label h2_text">Mobile Broadcast</h2>
         <p className="container_paragraph paragraph_text">
-          Сообщество людей, заинтересованых в мобильной разработке или
-          занимаются ей профессионально.
+          Это международное сообщество для всех, кто увлечен мобильной разработкой. Это место, где границы между платформами стираются, и единственное, что имеет значение – ваш интерес и страсть к мобильным технологиям.
         </p>
         <NavLink to={CITY_ROUTE}>
           <button className="container_button button">

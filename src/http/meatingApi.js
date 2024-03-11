@@ -27,6 +27,14 @@ export const deleteOneMeating = async (id) => {
         return data;
     }
 }
+export const deleteMeatingsByCityId = async (id) => {
+    if (!id) {
+        return null;
+    } else {
+        const { data } = await $host.delete('api/meating/deleteByCityId/' + id)
+        return data;
+    }
+}
 export const updateOneMeating = async (id, item) => {
     if (!id) {
         return null;

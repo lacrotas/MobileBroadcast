@@ -15,6 +15,9 @@ import AdminMeatingPage from "../adminPages/adminMeatingPage/AdminMeatingPage";
 import AdminCityPage from "../adminPages/adminCityPage/AdminCityPage";
 import AdminCountryPage from "../adminPages/adminCountryPage/AdminCountryPage";
 import AdminExpertPage from "../adminPages/adminExpertPage/AdminExpertPage";
+import AdminCurrentExpertInfo from "../adminPages/adminCurrentExpertPage/CurrentExpertInfo";
+import CurrentAdminCityPage from "../adminPages/adminCityPage/CurrentAdminCityPage";
+
 export const publicRoutes = [
     {
         path: MAIN_ROUTE,
@@ -48,6 +51,10 @@ export const adminRoutes = [
         Component: MainPage
     },
     {
+        path: EXPERT_ADMIN_ROUTE + '/:id',
+        Component: AdminCurrentExpertInfo
+    },
+    {
         path: EXPERT_ADMIN_ROUTE,
         Component: AdminExpertPage
     },
@@ -62,6 +69,10 @@ export const adminRoutes = [
     {
         path: CITY_ADMIN_ROUTE,
         Component: AdminCityPage
+    },
+    {
+        path: CITY_ADMIN_ROUTE + "/:id",
+        Component: CurrentAdminCityPage
     },
     {
         path: MEATING_ADMIN_ROUTE,

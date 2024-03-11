@@ -2,13 +2,15 @@
   margin: 0;
   padding: 0;
 }
-.app{
+
+.app {
   min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 a {
   text-decoration: none;
 }
@@ -56,10 +58,12 @@ body section {
   .h3_text {
     font-size: 28px;
   }
-  .h3_text {
-    font-size: 40px;
+
+  .h2_text {
+    font-size: 36px;
   }
-  .paragraph_text{
+
+  .paragraph_text {
     font-size: 16px;
   }
 }
@@ -93,9 +97,22 @@ body section {
     transition: all 0.3s ease-in-out;
   }
 }
-.my_input{
+
+.my_input {
   padding: 5px;
   border-radius: 10px;
   font-family: "Montserat_reg";
   font-size: 20px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #000;
+
+  &:hover {
+    border: none;
+    border-bottom: 1px solid #000;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
