@@ -20,7 +20,7 @@ function CurrentCityPage({ cityId }) {
     return (
         <div className="current_city-page">
             {city &&
-                <CurrentCityInfo img={city.image} />
+                <CurrentCityInfo img={city.image} link={city.link} />
             }
             {(imageArray && imageArray.length != 0) &&
                 <Slider imgArr={imageArray} />

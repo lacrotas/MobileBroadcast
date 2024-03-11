@@ -15,8 +15,8 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
       }
     } else if (type === "tehnology") {
       setSelectValues([
-        { name: "Android" }, { name: "Aurora OS" }, { name: "Flutter" },
-        { name: "IOS" }, { name: "Kotlin Multiplatform" }, { name: "Mobile Web" },
+        { name: "Android" }, { name: "Aurora" }, { name: "Flutter" },
+        { name: "IOS" }, { name: "Kotlin" }, { name: "Mobile Web" },
         { name: "ReactNative" }])
     } else if (type === "country") {
       fetchCountries().then(data => setSelectValues(data));
