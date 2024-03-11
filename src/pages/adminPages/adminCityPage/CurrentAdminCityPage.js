@@ -13,6 +13,7 @@ import { deleteMeatingsByCityId } from "../../../http/meatingApi";
 export default function CurrentAdminCityPage() {
     const { id } = useParams();
     const [currentCity, setCurrentCity] = useState();
+
     useEffect(() => {
         fetchAllGallaryImageByCityId(id).then(data => setGallary(data));
         if (!currentCity) {
@@ -96,9 +97,10 @@ export default function CurrentAdminCityPage() {
     }
     function UpdateGallary() {
         let finalGallary = [];
+        console.log(gallary);
         for (let i = 0; i < gallary.length; i++) {
             if (gallary[i] !== "") {
-                if (gallary[i].file instanceof File || gallary[i].file instanceof Blob) {
+                if (gallary[i] instanceof File || gallary[i] instanceof Blob) {
                     finalGallary.push(gallary[i]);
                 }
             }
@@ -109,6 +111,7 @@ export default function CurrentAdminCityPage() {
             formData.append('cityId', id);
             postGallaryImage(formData);
         });
+        console.log(finalGallary);
         indexGallaryToRemove.forEach((id) => deleteGallatyImageById(id));
     }
     return (
@@ -130,7 +133,7 @@ export default function CurrentAdminCityPage() {
                         {gallary.map((item, index) =>
                             <div className="galary_container" key={index}>
                                 {
-                                    (typeof (item) === "object") ?
+                                    (item.hasOwnProperty('file')) ?
                                         <>
                                             <p className="paragraph_text my_input">{item.file}</p>
                                             <img className="container_image" src={DeleteImage} onClick={() => setIndexToRemove(item.id, index)} alt="delete icon" />

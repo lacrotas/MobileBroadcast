@@ -5,13 +5,13 @@ function Slider({ imgArr }) {
     const [currentSlide, setCurrentSlide] = useState(Math.round(imgArr.length / 2) - 1);
     const sliderLength = imgArr.length;
 
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //         setCurrentSlide((prevcurrentSlide)=>(prevcurrentSlide +1) % sliderLength);
-    //     }, 4000);
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentSlide((prevcurrentSlide)=>(prevcurrentSlide +1) % sliderLength);
+        }, 4000);
 
-    //     return () => clearInterval(intervalId);
-    // }, []);
+        return () => clearInterval(intervalId);
+    }, []);
 
     function setNewSlide() {
         setCurrentSlide(currentSlide => (currentSlide + 1) % imgArr.length - 1);
