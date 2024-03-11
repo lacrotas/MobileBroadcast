@@ -53,7 +53,6 @@ export default function CurrentAdminCityPage() {
         setCityLogo(process.env.REACT_APP_API_URL + currentCity.image);
         setCityLogoText(currentCity.image.slice(-15));
         setCountry(currentCity.countryId);
-        console.log(gallary[0].file);
     }
     const removeItem = (indexToRemove) => {
         setGallary(prevArray => {
@@ -131,7 +130,7 @@ export default function CurrentAdminCityPage() {
                         {gallary.map((item, index) =>
                             <div className="galary_container" key={index}>
                                 {
-                                    item.file ?
+                                    (typeof (item) === "object") ?
                                         <>
                                             <p className="paragraph_text my_input">{item.file}</p>
                                             <img className="container_image" src={DeleteImage} onClick={() => setIndexToRemove(item.id, index)} alt="delete icon" />
