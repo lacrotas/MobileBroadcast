@@ -1,6 +1,7 @@
 import "./CurrentExpertPerson.scss";
 import { createExpert } from "../../../../http/expertApi";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import WomenAvatar from "../../../../assets/images/womenAvatar.png";
 import MenAvatar from "../../../../assets/images/menAvatar.png";
 import DeleteImage from "../../../../assets/images/delete.svg";

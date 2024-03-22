@@ -9,7 +9,6 @@
     margin-top: 100px;
 
     .footer_image {
-        filter: invert(1);
         width: 126px;
         height: 87px;
     }
@@ -132,6 +131,7 @@
         padding: 20px 30px;
 
         .container_contacts-big {
+            margin-top: 20px;
             display: block;
         }
 

@@ -9,13 +9,18 @@ import { fetchOneCity, deleteOneCity, updateOneCity } from "../../../http/cityAp
 import { postGallaryImage, fetchAllGallaryImageByCityId, deleteGallatyImageById } from "../../../http/gallaryImageApi";
 import { deleteExpertsByCityId } from "../../../http/expertApi";
 import { deleteMeatingsByCityId } from "../../../http/meatingApi";
+import { fetchAllCreatorsByCityId } from "../../../http/creatorApi";
+import { deleteAllCreatorsByCityId } from "../../../http/creatorApi";
+import CreatorCard from "../../../custom/creatorCard/CreatorCard";
+import ModalWindow from "../../../custom/modalWindow/ModalWindow";
 
 export default function CurrentAdminCityPage() {
     const { id } = useParams();
     const [currentCity, setCurrentCity] = useState();
-
+    const [creatorArr, setCreatorArr] = useState([]);
     useEffect(() => {
         fetchAllGallaryImageByCityId(id).then(data => setGallary(data));
+        fetchAllCreatorsByCityId(id).then(data => setCreatorArr(data));
         if (!currentCity) {
             fetchOneCity(id).then(data => setCurrentCity(data));
         }
@@ -41,13 +46,24 @@ export default function CurrentAdminCityPage() {
     const [gallary, setGallary] = useState([]);
     const [indexGallaryToRemove, setIndexGallaryToRemove] = useState([]);
 
+    /*creators */
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(false);
+    
+    function setCityToReduct(item) {
+        if (item) {
+            setSelectedItem(item);
+        } else {
+            setSelectedItem(false);
+        }
+        setIsModalOpen(true);
+    }
     function setIndexToRemove(id, index) {
         let newArr = indexGallaryToRemove;
         indexGallaryToRemove.push(id);
         setIndexGallaryToRemove(newArr);
         removeItem(index)
     }
-
     function init() {
         setCityName(currentCity.name);
         setCityLink(currentCity.link);
@@ -92,8 +108,12 @@ export default function CurrentAdminCityPage() {
         }
     }
     function deleteAllRelations() {
-        deleteExpertsByCityId(currentCity.id);
-        deleteMeatingsByCityId(currentCity.id);
+        try {
+            deleteAllCreatorsByCityId(currentCity.id);
+            deleteExpertsByCityId(currentCity.id);
+            deleteMeatingsByCityId(currentCity.id);
+        } catch (e) {
+        }
     }
     function UpdateGallary() {
         let finalGallary = [];
@@ -149,6 +169,26 @@ export default function CurrentAdminCityPage() {
                         <button className="button" onClick={() => setGallary([...gallary, ""])}>Добавить изображение</button>
                     </div>
                 </div>
+                <div className="container_organizator">
+                    <h3 className="h3_text">Организаторы:</h3>
+                    <div className="organizator_person_container_reduct">
+                        {creatorArr.map((item, index) =>
+                            <div className="galary_container" key={index} onClick={() => setCityToReduct(item)}>
+                                <CreatorCard image={process.env.REACT_APP_API_URL + item.image} name={item.name}
+                                    telegram={item.telegram} mail={item.mail} />
+                            </div>
+                        )}
+                        <button className="button" onClick={() => setCityToReduct(false)}>Добавить организатора</button>
+                    </div>
+                </div>
+                {(isModalOpen && selectedItem) &&
+                    < ModalWindow isReduct={true} nameValue={selectedItem.name}
+                        telegramValue={selectedItem.telegram} mailValue={selectedItem.mail} imageValue={selectedItem.image}
+                        type={'addExpert'} creatorId={selectedItem.id} closeModal={setIsModalOpen} cityId={id} />
+                }
+                {(isModalOpen && !selectedItem) &&
+                    < ModalWindow isReduct={false} type={'addExpert'} closeModal={setIsModalOpen} cityId={id} />
+                }
                 <div className="button_container_flex">
                     <button className="button" onClick={() => deleteCity()}>Удалить сообщество</button>
                     <button className="button" onClick={() => updateCity()}>Применить изменения</button>

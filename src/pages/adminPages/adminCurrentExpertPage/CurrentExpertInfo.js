@@ -65,7 +65,7 @@ export default function AdminCurrentExpertInfo() {
                         <button className="button" onClick={() => updateExpert()}>Применить изменения</button>
                     </div>
                     <CurrentExpertArticles expertId={expert.id} />
-                    <CurrentExpertMeatings id={expert.meatingId} />
+                    <CurrentExpertMeatings id={expert.meatingId} expertId={expert.id} />
                 </>
                 : <></>}
         </div>

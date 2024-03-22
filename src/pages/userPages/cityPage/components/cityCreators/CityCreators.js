@@ -1,8 +1,17 @@
 import "./CityCreators.scss";
-import ORGANIZATORS from "../../../../../base/ORGANIZATORS.js";
 import CreatorCard from "../../../../../custom/creatorCard/CreatorCard.js";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min.js";
+import { fetchAllCreatorsByCityId } from "../../../../../http/creatorApi.js";
 
-function CityCreators({ organizators }) {
+function CityCreators() {
+    const [creators, setCreators] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetchAllCreatorsByCityId(id).then(data => setCreators(data));
+    }, []);
+
     return (
         <section className="city_creators">
             <div className="city_creators_container">
@@ -12,8 +21,8 @@ function CityCreators({ organizators }) {
                     если у вас есть идеи по его
                     улучшению, свяжитесь с ними</p>
             </div>
-            {ORGANIZATORS.map((organizator, index) => (
-                <CreatorCard key={index} image={organizator.image}
+            {creators.map((organizator, index) => (
+                <CreatorCard key={index} image={process.env.REACT_APP_API_URL + organizator.image}
                     name={organizator.name} telegram={organizator.telegram}
                     mail={organizator.mail} />
             ))}

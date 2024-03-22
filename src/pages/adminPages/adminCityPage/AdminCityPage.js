@@ -1,5 +1,5 @@
 import "./AdminCityPage.scss";
-import AdminCitytFilter from "./AdminCitytFilter";
+import AdminCityFilter from "./AdminCitytFilter";
 import AdminCityGrid from "./AdminCityGrid";
 import { useState } from "react";
 import DeleteImage from "../../../assets/images/delete.svg"
@@ -47,7 +47,7 @@ export default function AdminCityPage() {
         <section>
             {!addMeating ?
                 <>
-                    <AdminCitytFilter setNameFilter={setNameFilter} setCountryFilter={setCountryFilter} />
+                    <AdminCityFilter setNameFilter={setNameFilter} setCountryFilter={setCountryFilter} />
                     <AdminCityGrid nameFilter={nameFilter} countryFilter={countryFilter} setAddMeating={setAddMeating} />
                 </>
                 :

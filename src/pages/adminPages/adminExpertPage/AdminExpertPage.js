@@ -39,7 +39,7 @@ export default function AdminExpertPage() {
                             ? <>
                                 {experts.map((item, index) => (
                                     <ExpertCard isAdmin={true} key={index} id={item.id} name={item.name} image={item.image}
-                                        technologies={item.technologies} cityId={item.cityId}  cityFilter={cityFilter}
+                                        technologies={item.technologies} cityId={item.cityId} cityFilter={cityFilter}
                                         tehnologyFilter={tehnologyFilter} nameFilter={nameFilter} />
                                 ))}
                                 <button className="button" onClick={() => setCreatingExpert("create")}>Добавить эксперта</button>

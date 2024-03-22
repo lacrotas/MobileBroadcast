@@ -1,6 +1,6 @@
 import "./AnhorCard.scss"
 import CardImage from "../../../assets/images/card_link.svg";
-import LogoImage from "../../../assets/images/header_logo.svg";
+import LogoImage from "../../../assets/images/logo.svg";
 import { NavLink } from "react-router-dom";
 import { ADMIN_MAIN_ROUTE } from "../../../pages/appRouter/Const";
 

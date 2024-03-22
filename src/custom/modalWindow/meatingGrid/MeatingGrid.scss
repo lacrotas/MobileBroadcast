@@ -1,0 +1,22 @@
+.meating_grid-modal {
+    position: relative;
+    z-index: 25;
+    background-color: aliceblue;
+    width: calc(80% - 80px);
+    padding: 40px;
+    overflow: auto;
+
+    .grid_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .meating_grid-modal {
+        .grid_container {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+}

@@ -10,7 +10,7 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
   useEffect(() => {
     if (type === "city") {
       fetchCityes().then(data => setSelectValues(data));
-      if(choosenValue){
+      if (choosenValue) {
         setSelectValues(choosenValue.name);
       }
     } else if (type === "tehnology") {
@@ -41,7 +41,7 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
   }
 
   return (
-    <div className="custom_button" onClick={() => setIsOpen(!isOpen)}>
+    <div className="custom_button" onClick={() => setIsOpen(!isOpen)} onMouseLeave={() => setIsOpen(false)}>
       <img className="custom_image" src={SelectImage} alt="image" />
       <p className="custom_text">{selectedValue}</p>
       {isOpen && <div className="custom_button-container">

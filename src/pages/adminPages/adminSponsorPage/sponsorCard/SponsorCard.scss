@@ -1,12 +1,16 @@
-.anhor_card {
+.statement_card {
     position: relative;
     width: 340px;
     height: 290px;
     padding: 30px;
     border-radius: 30px;
     background-color: #F9F9F9;
-    display: inline;
-
+    .card_image-sponsor{
+        margin-top: 20px;
+        width: 200px;
+        margin-left: 70px;
+        max-height: 120px;
+    }
     &:hover {
         cursor: pointer;
         background-color: #802AEA;
@@ -22,6 +26,9 @@
 
         .card_image {
             filter: invert(1);
+            &:hover{
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -54,14 +61,15 @@
 }
 
 @media screen and (max-width: 930px) {
-    .anhor_card {
+    .statement_card {
         width: calc(100% - 40px);
         padding: 20px;
         height: 200px;
     }
 }
+
 @media screen and (max-width: 530px) {
-    .anhor_card {
+    .statement_card {
         height: 250px;
     }
 }

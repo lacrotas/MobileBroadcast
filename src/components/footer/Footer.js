@@ -1,5 +1,5 @@
 import "./Footer.scss";
-import LogoImage from "../../assets/images/header_logo.svg";
+import LogoImage from "../../assets/images/logo.svg";
 import TelegramImage from "../../assets/images/ph_telegram-logo.svg";
 import MailImage from "../../assets/images/fluent_mail-24-regular.svg";
 

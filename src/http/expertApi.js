@@ -9,6 +9,10 @@ export const fetchOneExpert = async (id) => {
     const { data } = await $host.get('api/expert/' + id)
     return data
 }
+export const fetchAllMeatingByExpert = async (id) => {
+    const { data } = await $host.get('api/expert/getAllExpertMeating/' + id)
+    return data
+}
 export const createExpert = async (expert) => {
     const { data } = await $host.post('api/expert/addExpert', expert)
     return data

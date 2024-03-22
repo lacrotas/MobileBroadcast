@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react"
 import "./CurrentExpertMeatings.scss"
 import MeatingCard from "../../../../../custom/meatingCard/MeatingCard";
-import { fetchOneMeating } from "../../../../../http/meatingApi";
+import { fetchAllMeatingByExpert } from "../../../../../http/expertApi";
 
 function CurrentExpertMeatings({ id }) {
-    const [allMeatings, setAllMeatings] = useState();
+    const [allMeatings, setAllMeatings] = useState([]);
 
     useEffect(() => {
-        fetchOneMeating(id).then(data => setAllMeatings(data))
+        if (id !== null && id !== "") {
+            fetchAllMeatingByExpert(id).then(data => setAllMeatings(data))
+        }
     }, []);
 
     return (
         <section className="current_meating">
             <h3 className="h3_text">Ближайшие встречи</h3>
-            {allMeatings ?
+            {allMeatings != String([]) ?
                 <section className="meating_grid">
                     {allMeatings.map((item, index) => (
                         <MeatingCard key={index} location={item.location}

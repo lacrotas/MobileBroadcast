@@ -8,7 +8,6 @@
 
 .admin_city_page {
     margin-top: 150px;
-    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -40,7 +39,8 @@
             .galary_container {
                 display: flex;
                 width: 250px;
-                .paragraph_text.my_input{
+
+                .paragraph_text.my_input {
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     overflow: hidden;
@@ -59,11 +59,26 @@
             }
         }
     }
-    .button_container_flex{
+
+    .container_organizator {
+        margin-top: 20px;
+
+        .organizator_person_container_reduct {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+    }
+
+    .button_container_flex {
+        margin-top: 50px;
         display: flex;
         width: 100%;
         justify-content: space-between;
     }
+
     .button_final {
         margin-bottom: 50px;
         width: 250px;
