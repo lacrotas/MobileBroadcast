@@ -27,6 +27,7 @@
 
     .card_description {
         margin-top: 15px;
+        color: #000;
     }
 
     .card_container {
@@ -60,6 +61,7 @@
         height: 200px;
     }
 }
+
 @media screen and (max-width: 530px) {
     .anhor_card {
         height: 250px;

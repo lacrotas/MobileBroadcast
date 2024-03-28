@@ -12,14 +12,14 @@ function CurrentExpertInfo() {
     useEffect(() => {
         fetchOneExpert(id).then(data => setExperts(data));
     }, []);
-
     return (
         <div>
             {expert ?
                 <>
                     <CurrentExpertPerson name={expert.name} image={expert.image} aboutText={expert.aboutText}
                         sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId}
-                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail} />
+                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail}
+                        linkGitHub={expert.linkGitHab} linkLinkedIn={expert.linkLinkedIn} />
                     <CurrentExpertArticles expertId={expert.id} />
                     <CurrentExpertMeatings id={expert.meatingId} />
                 </>

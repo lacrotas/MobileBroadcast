@@ -19,7 +19,8 @@ function CurrentExpertPerson({ setBack }) {
     const [telegram, setTelegram] = useState();
     const [selectedImage, setSelectedImage] = useState();
     const [stack, setStack] = useState([""]);
-
+    const [gitHib, setGitHib] = useState();
+    const [linkedIn, setLinkedIn] = useState();
     const removeItem = (indexToRemove) => {
         setStack(prevArray => {
             const newArray = [...prevArray.slice(0, indexToRemove), ...prevArray.slice(indexToRemove + 1)];
@@ -71,6 +72,12 @@ function CurrentExpertPerson({ setBack }) {
             if (email) {
                 formData.append('linkMail', email);
             }
+            if (gitHib) {
+                formData.append('linkGitHab', gitHib);
+            }
+            if (linkedIn) {
+                formData.append('linkLinkedIn', linkedIn);
+            }
             formData.append('sex', sex);
             createExpert(formData);
             alert("Эксперт успешно добален");
@@ -100,10 +107,14 @@ function CurrentExpertPerson({ setBack }) {
                         <div className="expert_person_container">
                             <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />
                             <input className="paragraph_text my_input" type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="mail" />
+                            <input className="paragraph_text my_input" type="text" value={gitHib} onChange={(e) => setGitHib(e.target.value)} placeholder="gitHub" />
+                            <input className="paragraph_text my_input" type="text" value={linkedIn} onChange={(e) => setLinkedIn(e.target.value)} placeholder="linkedIn" />
                         </div>
                     </div>
                     <div className="expert_person-center">
-                        <img className="expert_person_image" src={image} alt="logo" />
+                        <div className="expert_person_center_image_container">
+                            <img className="expert_person_image" src={image} alt="logo" />
+                        </div>
                         <div className="expert_person_container">
                             <div className="container_sex">
                                 <p className="paragraph_text" style={{ fontWeight: sex === "men" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("men", MenAvatar)}>Мужской</p>

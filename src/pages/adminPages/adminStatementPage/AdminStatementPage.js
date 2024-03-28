@@ -12,7 +12,7 @@ function AdminStatementPage() {
     return (
         <section className="statement_grid">
             {(sponsorsStatemnets == String([])) ?
-                <h3 className="h3_text">Пока никто не хочет быть вашим спонсором.</h3>
+                <h3 className="h3_text">Страница для будущих спонсоров.</h3>
                 :
                 <>
                     {

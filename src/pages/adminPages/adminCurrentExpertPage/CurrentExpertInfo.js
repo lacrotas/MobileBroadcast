@@ -42,7 +42,12 @@ export default function AdminCurrentExpertInfo() {
         if (currentExpert.linkMail) {
             formData.append('linkMail', currentExpert.linkMail);
         }
-        console.log(currentExpert.image);
+        if (currentExpert.linkGitHab) {
+            formData.append('linkGitHab', currentExpert.linkGitHab);
+        }
+        if (currentExpert.linkLinkedIn) {
+            formData.append('linkLinkedIn', currentExpert.linkLinkedIn);
+        }
         updateOneExpert(expert.id, formData);
         alert("Эксперт отредактирован");
         window.location.reload();
@@ -61,8 +66,9 @@ export default function AdminCurrentExpertInfo() {
                 <>
                     <CurrentExpertPerson name={expert.name} image={expert.image} aboutText={expert.aboutText}
                         sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId}
-                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail}
-                        setCurrentExpertPersonValues={setCurrentExpertPersonValues} updateExpert={updateExpert} deleteExpert={deleteExpert} />
+                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail} 
+                        setCurrentExpertPersonValues={setCurrentExpertPersonValues} updateExpert={updateExpert} deleteExpert={deleteExpert}
+                        linkGitHab={expert.linkGitHab} linkLinkedIn={expert.linkLinkedIn} />
                     <CurrentExpertArticles expertId={expert.id} />
                     <CurrentExpertMeatings id={expert.meatingId} expertImage={expert.image} expertId={expert.id} />
                 </>

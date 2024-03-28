@@ -26,7 +26,7 @@ export default function AdminExpertPage() {
                     <section className="expert_filter">
                         <div className="expert_filter_container">
                             <h2 className="expert_filter_label h2_text">Эксперты</h2>
-                            <p className="expert_filter_paragraph paragraph_text">На данной странице отображены все эксперты Mobile Broadcast вы можете добавлять, редактировать и удалять экспертов</p>
+                            <p className="expert_filter_paragraph paragraph_text">На данной странице отображены все эксперты Mobile Broadcast: вы можете добавлять, редактировать и удалять экспертов</p>
                         </div>
                         <div className="expert_filter_buttons">
                             <CustomButton setValue={setCityFilter} type="city" defaultValue="Город" />

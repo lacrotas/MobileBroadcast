@@ -7,13 +7,15 @@ import CustomButton from "../../../../../custom/customButton/CustomButton";
 import CustomInputFile from "../../../../../custom/customInputFile/CustomInputFile";
 import DeleteImage from "../../../../../assets/images/delete.svg";
 
-function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues, deleteExpert, updateExpert }) {
+function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues, deleteExpert, updateExpert, linkGitHab, linkLinkedIn }) {
     const [stackValue, setStackValue] = useState(technologies.split("/"));
     const avatar = (sex === "men") ? MenAvatar : WomenAvatar;
     /* values */
     const [nameValue, setNameValue] = useState(name);
     const [telegram, setTelegram] = useState(linkTelegram);
     const [mail, setMail] = useState(linkMail);
+    const [gitHib, setGitHib] = useState(linkGitHab);
+    const [linkedIn, setLinkedIn] = useState(linkLinkedIn);
     const [city, setCity] = useState();
     const [selectedImage, setSelectedImage] = useState(image);
     const [sexValue, setSex] = useState(sex);
@@ -59,14 +61,14 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
         setCurrentExpertPersonValues({
             name: nameValue, sex: sexValue, aboutText: aboutTextValue,
             image: selectedImage, technologies: stackValue, cityId: city.id,
-            linkTelegram: telegram, linkMail: mail
+            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn
         });
     }
     function update() {
         updateExpert({
             name: nameValue, sex: sexValue, aboutText: aboutTextValue,
             image: selectedImage, technologies: stackValue, cityId: city.id,
-            linkTelegram: telegram, linkMail: mail
+            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn
         });
     }
     return (
@@ -89,6 +91,8 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
                         <div className="expert_person_container">
                             <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />
                             <input className="paragraph_text my_input" type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="mail" />
+                            <input className="paragraph_text my_input" type="text" value={gitHib} onChange={(e) => setGitHib(e.target.value)} placeholder="gitHub" />
+                            <input className="paragraph_text my_input" type="text" value={linkedIn} onChange={(e) => setLinkedIn(e.target.value)} placeholder="linkedIn" />
                         </div>
                     </div>
                     <div className="expert_person-center">
