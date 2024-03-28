@@ -15,10 +15,25 @@ export default function MeatingGrid({ expertId }) {
         fetchOneExpert(expertId).then(data => setCurrentExpert(data));
     }, []);
     function addMeatingToExpert(meatingId) {
-        let newMeatngId = currentExpert.meatingId.split(".");
+        let newMeatngId = [];
+        if (currentExpert.meatingId) {
+            newMeatngId = currentExpert.meatingId.split(".");
 
-        if (newMeatngId.includes(String(meatingId))) {
-            alert("Данная встреча уже назначенна для данного эксперта");
+            if (newMeatngId.includes(String(meatingId))) {
+                alert("Данная встреча уже назначенна для данного эксперта");
+            } else {
+                newMeatngId.push(String(meatingId));
+                let newString = ""
+                for (let i = 0; i < newMeatngId.length; i++) {
+                    newString += newMeatngId[i];
+                    if (i + 1 < newMeatngId.length) {
+                        newString += ".";
+                    }
+                }
+                updateOneExpert(currentExpert.id, { meatingId: newString, image: currentExpert.image },);
+                alert("Встреча добавленна к эксперту");
+                window.location.reload();
+            }
         } else {
             newMeatngId.push(String(meatingId));
             let newString = ""
@@ -28,7 +43,7 @@ export default function MeatingGrid({ expertId }) {
                     newString += ".";
                 }
             }
-            updateOneExpert(currentExpert.id, { meatingId: newString });
+            updateOneExpert(currentExpert.id, { meatingId: newString, image: currentExpert.image });
             alert("Встреча добавленна к эксперту");
             window.location.reload();
         }

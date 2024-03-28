@@ -4,7 +4,7 @@ import MeatingCard from "../../../../../custom/modalWindow/meatingGrid/meatingCa
 import { fetchAllMeatingByExpert, updateOneExpert } from "../../../../../http/expertApi";
 import ModalWindow from "../../../../../custom/modalWindow/ModalWindow";
 
-function CurrentExpertMeatings({ id, expertId }) {
+function CurrentExpertMeatings({ id, expertImage, expertId }) {
     const [meatings, setMeatings] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
@@ -17,7 +17,7 @@ function CurrentExpertMeatings({ id, expertId }) {
         let newMeatngId = id.split(".");
         if (newMeatngId.includes(String(meatingId))) {
             newMeatngId.splice(newMeatngId.indexOf(String(meatingId)), 1);
-            updateOneExpert(expertId, { meatingId: newMeatngId.join('.') });
+            updateOneExpert(expertId, { meatingId: newMeatngId.join('.'), image: expertImage });
             alert("Данная встреча удаленная для эксперта");
             window.location.reload();
         } else {

@@ -13,6 +13,7 @@
 
     .current_city_text {
         width: 780px;
+        margin-left: 20px;
 
         .city_text_paragraph {
             margin-top: 15px;
@@ -35,25 +36,31 @@
             width: 250px;
             height: 250px;
         }
+
         .current_city_image-back {
             bottom: 120px;
         }
     }
 }
+
 @media screen and (max-width: 600px) {
     .current_city {
         flex-direction: column;
         align-items: flex-start;
+
         .current_city_image-logo {
             width: 250px;
             height: 250px;
         }
+
         .current_city_image-back {
             bottom: 0px;
             float: left;
         }
-        .current_city_text{
+
+        .current_city_text {
             width: 100%;
+            margin-left: 0px;
         }
     }
 }

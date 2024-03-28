@@ -13,7 +13,7 @@ function AppRouter() {
             {publicRoutes.map(({ path, Component }) =>
                 <Route key={path} path={path} component={Component} exact />
             )}
-            <Redirect to={'/'} />
+            <Redirect to={(window.location.pathname.split("/")[1] == "admin") ? window.location.pathname : '/'} />
         </Switch>
     );
 }

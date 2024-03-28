@@ -13,7 +13,9 @@ function CreatorCard({ image, name, telegram, mail }) {
     }
     return (
         <div className="creators_card">
+            <div className="creators_image_container">
             <img className="creators_image" src={image} alt="creators image" />
+            </div>
             <p className="creators_card_label paragraph_text">{name}</p>
             {telegram &&
                 <a target="blank" href={isValidUrl(telegram) ? telegram : ""}>

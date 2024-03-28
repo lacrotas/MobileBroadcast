@@ -22,7 +22,7 @@ function CurrentCityInfo({ img, link }) {
                 <h2 className="city_text_label h2_text">Информация о городе</h2>
                 <p className="city_text_paragraph paragraph_text">Вы можете просмотреть галлерею, ознакомиться с
                     организаторами сообщества в данном городе, а также вступить в него</p>
-                <a target="blank" href={isValidUrl(link) ? link : ""}>
+                <a target="_blank" href={isValidUrl(link) ? link : ""}>
                     <button className="city_text_button button">Вступить в сообщество</button>
                 </a>
             </div>

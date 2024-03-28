@@ -3,13 +3,11 @@ import { fetchOneCity } from "../../../../../http/cityApi";
 import { useState, useEffect } from "react";
 import WomenAvatar from "../../../../../assets/images/womenAvatar.png";
 import MenAvatar from "../../../../../assets/images/menAvatar.png";
-import TelegramImage from "../../../../../assets/images/telegram_circle.svg";
-import MailImage from "../../../../../assets/images/mail_circle.svg";
 import CustomButton from "../../../../../custom/customButton/CustomButton";
 import CustomInputFile from "../../../../../custom/customInputFile/CustomInputFile";
 import DeleteImage from "../../../../../assets/images/delete.svg";
 
-function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues }) {
+function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues, deleteExpert, updateExpert }) {
     const [stackValue, setStackValue] = useState(technologies.split("/"));
     const avatar = (sex === "men") ? MenAvatar : WomenAvatar;
     /* values */
@@ -63,43 +61,56 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
             image: selectedImage, technologies: stackValue, cityId: city.id,
             linkTelegram: telegram, linkMail: mail
         });
-
-        // setCurrentExpertPersonValues(formData);
+    }
+    function update() {
+        updateExpert({
+            name: nameValue, sex: sexValue, aboutText: aboutTextValue,
+            image: selectedImage, technologies: stackValue, cityId: city.id,
+            linkTelegram: telegram, linkMail: mail
+        });
     }
     return (
-        <section className="expert_person" onChange={() => setData()}>
-            <div className="expert_person_container">
-                <div className="expert_person-left">
-                    <input className="h2_text my_input" placeholder="ФИО" type="text" value={nameValue} onChange={(e) => { setNameValue(e.target.value) }} />
-                    <div className="expert_person_container_reduct">
-                        {stackValue.map((item, index) =>
-                            <div className="tehnology_container" key={index}>
-                                <input className="paragraph_text my_input" value={item} placeholder="технология" type="text" onChange={(e) => handleTehnologyAdd(e.target.value, index)} />
-                                <img className="container_image" src={DeleteImage} onClick={() => removeItem(index)} alt="delete icon" />
-                            </div>
-                        )
-                        }
-                        <button className="button" onClick={() => setStackValue([...stackValue, ""])}>Добавить технологию</button>
-                    </div>
-                    <CustomButton choosenValue={city} isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />
-                    <div className="expert_person_container">
-                        <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />
-                        <input className="paragraph_text my_input" type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="mail" />
-                    </div>
-                </div>
-                <div className="expert_person-center">
-                    <img className="expert_person_image" src={imageValue} alt="logo" />
-                    <div className="expert_person_container">
-                        <div className="container_sex">
-                            <p className="paragraph_text" style={{ fontWeight: sexValue === "men" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("men", MenAvatar)}>Мужской</p>
-                            <p className="paragraph_text" style={{ fontWeight: sexValue === "women" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("women", WomenAvatar)}>Женский</p>
+        <>
+            <section className="expert_person" onChange={() => setData()}>
+                <div className="expert_person_container">
+                    <div className="expert_person-left">
+                        <input className="h2_text my_input" placeholder="ФИО" type="text" value={nameValue} onChange={(e) => { setNameValue(e.target.value) }} />
+                        <div className="expert_person_container_reduct">
+                            {stackValue.map((item, index) =>
+                                <div className="tehnology_container" key={index}>
+                                    <input className="paragraph_text my_input" value={item} placeholder="технология" type="text" onChange={(e) => handleTehnologyAdd(e.target.value, index)} />
+                                    <img className="container_image" src={DeleteImage} onClick={() => removeItem(index)} alt="delete icon" />
+                                </div>
+                            )
+                            }
+                            <button className="button" onClick={() => setStackValue([...stackValue, ""])}>Добавить технологию</button>
                         </div>
-                        <CustomInputFile handleImageChange={handleImageChange} />
+                        <CustomButton choosenValue={city} isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />
+                        <div className="expert_person_container">
+                            <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />
+                            <input className="paragraph_text my_input" type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="mail" />
+                        </div>
+                    </div>
+                    <div className="expert_person-center">
+                        <div className="expert_person_center_image_container">
+                            <img className="expert_person_image" src={imageValue} alt="logo" />
+                        </div>
+                        <div className="expert_person_container">
+                            <div className="container_sex">
+                                <p className="paragraph_text" style={{ fontWeight: sexValue === "men" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("men", MenAvatar)}>Мужской</p>
+                                <p className="paragraph_text" style={{ fontWeight: sexValue === "women" ? "bold" : "normal" }} onClick={() => handleChangeImageDefault("women", WomenAvatar)}>Женский</p>
+                            </div>
+                            <CustomInputFile handleImageChange={handleImageChange} />
+                        </div>
                     </div>
                 </div>
+                <textarea className="expert_person_paragraph_text paragraph_text" value={aboutTextValue} onChange={(e) => setAboutTextValue(e.target.value)} />
+            </section>
+            <div className="admin_current_expert">
+                <button className="button" onClick={() => deleteExpert()}>Удалить эксперта</button>
+                <button className="button" onClick={() => update()}>Применить изменения</button>
             </div>
-            <textarea className="expert_person_paragraph_text paragraph_text" value={aboutTextValue} onChange={(e) => setAboutTextValue(e.target.value)} />
-        </section>
+        </>
     );
 }
 

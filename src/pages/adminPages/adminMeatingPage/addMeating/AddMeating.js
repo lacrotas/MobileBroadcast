@@ -86,7 +86,6 @@ export default function AddMeating({ item, setBack }) {
         if (location && myData && time && city) {
             updateOneMeating(item.id, { location: location, data: myData, time: time, cityId: city.id });
             alert("Встреча успешно отредактированна");
-            setBack(false);
             window.location.reload();
         } else {
             alert("Вы не заполнили все поля");

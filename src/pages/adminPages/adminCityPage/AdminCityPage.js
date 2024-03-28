@@ -41,7 +41,6 @@ export default function AdminCityPage() {
         } else {
             alert("Заполните все поля");
         }
-
     }
     return (
         <section>

@@ -49,7 +49,9 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
                             <></>}
                     </div>
                 </div>
-                <img className="expert_person_image" src={(image !== null) ? process.env.REACT_APP_API_URL + image : avatar} alt="logo" />
+                <div className="expert_person_watch_image_container">
+                    <img className="expert_person_image" src={(image !== null) ? process.env.REACT_APP_API_URL + image : avatar} alt="logo" />
+                </div>
             </div>
             <p className="expert_person_paragraph_text paragraph_text">{aboutText}</p>
         </section>

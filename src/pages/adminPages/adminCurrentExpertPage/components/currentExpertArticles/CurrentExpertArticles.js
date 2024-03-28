@@ -13,9 +13,11 @@ function CurrentExpertArticles({ expertId }) {
     }, []);
     function handleChangeArray(index, data, isNameInput) {
         let newArr = articles;
-        if (isNameInput) {
+        if (isNameInput === "name") {
             newArr[index].name = data;
-        } else {
+        } else if (isNameInput === "link") {
+            newArr[index].link = data;
+        } else if (isNameInput === "file") {
             newArr[index].file = data;
         }
         setArticles(newArr);
@@ -37,10 +39,11 @@ function CurrentExpertArticles({ expertId }) {
             deleteOneArticle(articlesToRemove[i].id);
         }
         for (let i = 0; i < articles.length; i++) {
-            if (articles[i].file instanceof File || articles[i].file instanceof Blob) {
+            if ((articles[i].file instanceof File || articles[i].file instanceof Blob) || articles[i].link) {
                 dataToSend.push(articles[i]);
                 const formData = new FormData();
                 formData.append('name', articles[i].name);
+                formData.append('link', articles[i].link);
                 formData.append('file', articles[i].file);
                 formData.append('expertId', articles[i].expertId);
                 createOneArticle(formData);
@@ -48,6 +51,14 @@ function CurrentExpertArticles({ expertId }) {
         }
         alert("Статьи добавлены");
         window.location.reload();
+    }
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
     }
     return (
         <section className="current_articles">
@@ -57,23 +68,33 @@ function CurrentExpertArticles({ expertId }) {
                     <>
                         {
                             articles.map((item, index) => (
-                                <div className={item.file.name ? "articles_container_item" : "articles_container_item-ready"} key={index}>
+                                <div className={(item.link) ? "articles_container_item" : "articles_container_item-ready"} key={index}>
                                     {
-                                        item.file.name ?
+                                        item.isCreating ?
                                             <>
-                                                <input className="my_input" type="text" onChange={(e) => handleChangeArray(index, (e.target.value || item.name), true)} placeholder={item.name} />
-                                                <div className="file-input-container">
-                                                    <input type="file" id="fileInput" className="file-input" onChange={(e) => handleChangeArray(index, e.target.files[0], false)} />
-                                                    <label htmlFor="fileInput" className="custom-button">{item.file.name}</label>
+                                                <div className="input_container">
+                                                    <input className="my_input" type="text" onChange={(e) => handleChangeArray(index, (e.target.value || item.name), "name")} placeholder={item.name} />
+                                                    <input className="my_input" type="text" onChange={(e) => handleChangeArray(index, (e.target.value || item.link), "link")} placeholder={item.link} />
+                                                    <div className="file-input-container">
+                                                        <input type="file" id="fileInput" className="file-input" onChange={(e) => handleChangeArray(index, e.target.files[0], "file")} />
+                                                        <label htmlFor="fileInput" className="custom-button">{item.file.name}</label>
+                                                    </div>
                                                 </div>
                                                 <img src={DeleteImage} alt="delete" onClick={() => removeItem(index)} />
                                             </>
                                             :
                                             <>
-                                                <p className="paragraph_text">{item.name}</p>
-                                                <a href={process.env.REACT_APP_API_URL + item.file}>
-                                                    <img src={WordImage} alt="image" />
-                                                </a>
+                                                {item.file ?
+                                                    <a className="ready_item_link" href={process.env.REACT_APP_API_URL + item.file}>
+                                                        <p className="paragraph_text">{item.name}</p>
+                                                        <img src={WordImage} alt="image" />
+                                                    </a>
+                                                    :
+                                                    <a className="ready_item_link" target="_blank" href={isValidUrl(item.link) ? item.link : "/"}>
+                                                        <p className="paragraph_text">{item.name}</p>
+                                                        <img src={WordImage} alt="image" />
+                                                    </a>
+                                                }
                                                 <img src={DeleteImage} alt="delete" onClick={() => removeItem(index)} />
                                             </>
                                     }
@@ -84,7 +105,7 @@ function CurrentExpertArticles({ expertId }) {
                 }
             </div>
             <div className="reducting_buttons">
-                <button className="button" onClick={() => setArticles([...articles, { name: "Название статьи", file: { name: "Выберите файл" }, expertId: expertId }])}>Добавить</button>
+                <button className="button" onClick={() => setArticles([...articles, { name: "Название статьи", link: "Ссылка или файл", file: { name: "Выберите файл" }, isCreating: true, expertId: expertId }])}>Добавить</button>
                 <button className="button" onClick={() => addArticles()}>Применить изменения</button>
             </div>
         </section >

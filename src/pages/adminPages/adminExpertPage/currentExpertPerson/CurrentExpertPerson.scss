@@ -22,8 +22,6 @@
             flex-direction: column;
 
             .expert_person_image {
-                width: 300px;
-                height: 300px;
                 border-radius: 50%;
             }
 
@@ -54,6 +52,7 @@
         .expert_person_container_reduct {
             display: flex;
             flex-direction: column;
+
             .tehnology_container {
                 display: flex;
                 align-items: center;
@@ -62,13 +61,16 @@
                 border-radius: 10px;
                 padding: 5px;
                 margin-bottom: 10px;
+
                 .container_image {
                     width: 30px;
                     height: 30px;
                 }
+
                 .my_input {
                     border: none;
                     margin-top: 0;
+
                     &:hover {
                         border: none;
                     }
@@ -132,18 +134,27 @@
         width: auto;
     }
 
-    .expert_person .expert_person_container .expert_person-center .expert_person_image {
+    .expert_person .expert_person_container .expert_person-center .expert_person_center_image_container {
         width: 130px;
         height: 130px;
     }
 }
+
 @media screen and (max-width: 460px) {
-    .expert_person .expert_person_container{
+    .expert_person .expert_person_container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .expert_person-left  {
+            width: 100%;
+        }
     }
-    .expert_person .expert_person_container .expert_person-center{
+    .expert_person .expert_person_paragraph_text  {
+        width: 100% !important;
+    }
+
+    .expert_person .expert_person_container .expert_person-center {
         margin-top: 20px;
     }
 }

@@ -75,7 +75,7 @@ function AddExpert({ cityId, creatorId, closeModal, nameValue, telegramValue, ma
             {isReduct ?
                 <>
                     <button className="expert_statement_button button" onClick={() => deleteCreator()}>Удалить</button>
-                    <button className="expert_statement_button button" onClick={() => reductCreator()}>Отправить</button>
+                    <button className="expert_statement_button button" onClick={() => reductCreator()}>Редактировать</button>
                 </>
                 :
                 <button className="expert_statement_button button" onClick={() => addCreator()}>Отправить</button>

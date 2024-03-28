@@ -16,6 +16,18 @@
             align-items: center;
             width: 300px;
             align-items: center;
+            .ready_item_link {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                .paragraph_text{
+                    margin-left: 10px;
+                    white-space: nowrap;
+                    overflow: hidden; 
+                    text-overflow: ellipsis;
+                }
+            }
             .paragraph_text{
                 margin: 0;
             }

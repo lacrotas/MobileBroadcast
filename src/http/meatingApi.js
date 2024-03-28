@@ -5,7 +5,7 @@ export const fetchMeatings = async () => {
     const { data } = await $host.get('api/meating/getAllMeating');
     return data;
 }
-export const postMeating= async (meating) => {
+export const postMeating = async (meating) => {
     const { data } = await $host.post('api/meating/addMeating', meating);
     return data;
 }
@@ -31,8 +31,10 @@ export const deleteMeatingsByCityId = async (id) => {
     if (!id) {
         return null;
     } else {
-        const { data } = await $host.delete('api/meating/deleteByCityId/' + id)
-        return data;
+        try {
+            const { data } = await $host.delete('api/meating/deleteByCityId/' + id)
+            return data;
+        } catch (e) { }
     }
 }
 export const updateOneMeating = async (id, item) => {

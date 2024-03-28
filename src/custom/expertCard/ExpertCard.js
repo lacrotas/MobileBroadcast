@@ -49,7 +49,9 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
             {(city && checkCity()) ?
                 <NavLink to={(isAdmin) ? EXPERT_ADMIN_ROUTE + "/" + id : EXPERT_ROUTE + "/" + id}>
                     <section className="expert">
+                        <div className="expert_image_container">
                         <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
+                        </div>
                         <p className="expert_label paragraph_text">{name}</p>
                         <div className="expert_container-location">
                             <img src={LocationImage} alt="location" />

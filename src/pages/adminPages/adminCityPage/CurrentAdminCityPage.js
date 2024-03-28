@@ -4,7 +4,7 @@ import AdminCityGrid from "./AdminCityGrid";
 import { useState, useEffect } from "react";
 import DeleteImage from "../../../assets/images/delete.svg"
 import CustomButton from "../../../custom/customButton/CustomButton";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchOneCity, deleteOneCity, updateOneCity } from "../../../http/cityApi";
 import { postGallaryImage, fetchAllGallaryImageByCityId, deleteGallatyImageById } from "../../../http/gallaryImageApi";
 import { deleteExpertsByCityId } from "../../../http/expertApi";
@@ -13,6 +13,7 @@ import { fetchAllCreatorsByCityId } from "../../../http/creatorApi";
 import { deleteAllCreatorsByCityId } from "../../../http/creatorApi";
 import CreatorCard from "../../../custom/creatorCard/CreatorCard";
 import ModalWindow from "../../../custom/modalWindow/ModalWindow";
+import {CITY_ADMIN_ROUTE} from "../../appRouter/Const";
 
 export default function CurrentAdminCityPage() {
     const { id } = useParams();
@@ -36,6 +37,8 @@ export default function CurrentAdminCityPage() {
     const [country, setCountry] = useState();
     /* design statement */
     const [cityLogoText, setCityLogoText] = useState("Логотип");
+
+    const history = useHistory();
 
     /* save file */
     function setFileInputLogo(e) {
@@ -104,7 +107,7 @@ export default function CurrentAdminCityPage() {
             deleteAllRelations();
             deleteOneCity(currentCity.id);
             alert("Город удален");
-            window.location.reload();
+            history.push(CITY_ADMIN_ROUTE);
         }
     }
     function deleteAllRelations() {

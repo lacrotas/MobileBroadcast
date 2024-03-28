@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory  } from "react-router-dom";
 import { fetchOneExpert, updateOneExpert, deleteOneExpert } from "../../../http/expertApi";
 import CurrentExpertPerson from "./components/currentExpertPerson/CurrentExpertPerson";
 import CurrentExpertMeatings from "./components/currentExpertMeatings/CurrentExpertMeatings";
 import CurrentExpertArticles from "./components/currentExpertArticles/CurrentExpertArticles";
 import "./CurrentExpertInfo.scss";
-
+import {EXPERT_ADMIN_ROUTE} from '../../appRouter/Const';
 export default function AdminCurrentExpertInfo() {
     const [expert, setExperts] = useState();
     const { id } = useParams();
     const [currentExpertPersonValues, setCurrentExpertPersonValues] = useState();
     const [isUpdated, setIsUpdated] = useState(false);
+
+    const history = useHistory();
+
     useEffect(() => {
         if (!expert) {
             fetchOneExpert(id).then(data => setExperts(data));
@@ -25,21 +28,21 @@ export default function AdminCurrentExpertInfo() {
         }
     }, [expert]);
 
-    function updateExpert() {
+    function updateExpert(currentExpert) {
         const formData = new FormData();
-        formData.append('name', currentExpertPersonValues.name);
-        formData.append('sex', currentExpertPersonValues.sex);
-        formData.append('aboutText', currentExpertPersonValues.aboutText);
-        formData.append('image', currentExpertPersonValues.image);
-        formData.append('technologies', currentExpertPersonValues.technologies.join('/'));
-        formData.append('cityId', currentExpertPersonValues.cityId);
-        if (currentExpertPersonValues.linkTelegram) {
-            formData.append('linkTelegram', currentExpertPersonValues.linkTelegram);
+        formData.append('name', currentExpert.name);
+        formData.append('sex', currentExpert.sex);
+        formData.append('aboutText', currentExpert.aboutText);
+        formData.append('image', currentExpert.image);
+        formData.append('technologies', currentExpert.technologies.join('/'));
+        formData.append('cityId', currentExpert.cityId);
+        if (currentExpert.linkTelegram) {
+            formData.append('linkTelegram', currentExpert.linkTelegram);
         }
-        if (currentExpertPersonValues.linkMail) {
-            formData.append('linkMail', currentExpertPersonValues.linkMail);
+        if (currentExpert.linkMail) {
+            formData.append('linkMail', currentExpert.linkMail);
         }
-        console.log(currentExpertPersonValues);
+        console.log(currentExpert.image);
         updateOneExpert(expert.id, formData);
         alert("Эксперт отредактирован");
         window.location.reload();
@@ -49,7 +52,7 @@ export default function AdminCurrentExpertInfo() {
         if (result === "да") {
             deleteOneExpert(id);
             alert("Эксперт удален");
-            window.location.reload();
+            history.push(EXPERT_ADMIN_ROUTE);
         }
     }
     return (
@@ -59,13 +62,9 @@ export default function AdminCurrentExpertInfo() {
                     <CurrentExpertPerson name={expert.name} image={expert.image} aboutText={expert.aboutText}
                         sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId}
                         linkTelegram={expert.linkTelegram} linkMail={expert.linkMail}
-                        setCurrentExpertPersonValues={setCurrentExpertPersonValues} />
-                    <div className="admin_current_expert">
-                        <button className="button" onClick={() => deleteExpert()}>Удалить эксперта</button>
-                        <button className="button" onClick={() => updateExpert()}>Применить изменения</button>
-                    </div>
+                        setCurrentExpertPersonValues={setCurrentExpertPersonValues} updateExpert={updateExpert} deleteExpert={deleteExpert} />
                     <CurrentExpertArticles expertId={expert.id} />
-                    <CurrentExpertMeatings id={expert.meatingId} expertId={expert.id} />
+                    <CurrentExpertMeatings id={expert.meatingId} expertImage={expert.image} expertId={expert.id} />
                 </>
                 : <></>}
         </div>

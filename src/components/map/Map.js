@@ -40,7 +40,7 @@ function Map({ svgClass }) {
     <div className={svgClass}>
 
       {(!isModal) ?
-        <svg width="677" height="364" viewBox="0 0 677 364" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="677" height="364" viewBox="0 0 800 309" fill="none" xmlns="http://www.w3.org/2000/svg">
           {MAP_PATH.map((item, index) => (
             <path d={item} key={index} fill={checkCountryOnStyle(index) ? checkCountryOnStyle(index)[0] : "#B3A8A8"} />
           ))}
@@ -58,7 +58,7 @@ function Map({ svgClass }) {
               <p>1:1</p>
             </div>
           </div>
-          <svg style={scaledStyle} width="677" height="364" viewBox="0 0 677 364" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg style={scaledStyle} width="677" height="364" viewBox="0 0 800 309" fill="none" xmlns="http://www.w3.org/2000/svg">
             {MAP_PATH.map((item, index) => (
               <path d={item} key={index} fill={checkCountryOnStyle(index) ? checkCountryOnStyle(index)[0] : "#B3A8A8"} onClick={() => setCurrentCountry(index)} />
             ))}

@@ -26,8 +26,8 @@ function Footer() {
                     <div className="creators_container">
                         <p className="creators_item paragraph_text"><strong>Кирилл Розов</strong> -
                             MBE по Android, блогер, основатель Android Broadcast</p>
-                        <p className="creators_item paragraph_text"><strong>Кирилл Розов</strong> -
-                            MBE по Android, блогер, основатель Android Broadcast</p>
+                        <p className="creators_item paragraph_text"><strong>Алексей Гладков</strong> -
+                            MBE по Android, Aurora и Kotlin Multiplatform</p>
                     </div>
                 </div>
                 <div className="container_contacts container_contacts-big">
