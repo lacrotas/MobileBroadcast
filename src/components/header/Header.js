@@ -56,10 +56,10 @@ function Header({ setOpenModal }) {
                 <p className="navigation_item" style={{ fontWeight: (navigate === 3) ? 'bold' : 'normal' }}
                   onClick={() => setNavigate(3)}>Эксперты</p>
               </NavLink>
-              <NavLink to={MEATING_ROUTE}>
+              {/* <NavLink to={MEATING_ROUTE}>
                 <p className="navigation_item" style={{ fontWeight: (navigate === 4) ? 'bold' : 'normal' }}
                   onClick={() => setNavigate(4)}>Встречи</p>
-              </NavLink>
+              </NavLink> */}
               <NavLink to={ADMIN_MAIN_ROUTE}>
                 <p className="navigation_item" style={{ fontWeight: (navigate === 5) ? 'bold' : 'normal' }}
                   onClick={() => setNavigate(5)}>Заявления</p>
@@ -111,10 +111,10 @@ function Header({ setOpenModal }) {
                     <p className="navigation_item" style={{ fontWeight: (navigate === 3) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(3)}>Эксперты</p>
                   </NavLink>
-                  <NavLink to={MEATING_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  {/* <NavLink to={MEATING_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 4) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(4)}>Встречи</p>
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink to={ADMIN_MAIN_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 5) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(5)}>Заявления</p>

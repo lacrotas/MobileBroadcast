@@ -1,7 +1,7 @@
-import "./Slider.scss";
+import "./SliderMain.scss";
 import { useState, useEffect } from "react";
 
-function Slider({ imgArr }) {
+function SliderMain({ imgArr }) {
     const [currentSlide, setCurrentSlide] = useState(Math.round(imgArr.length / 2) - 1);
     const sliderLength = imgArr.length;
 
@@ -28,7 +28,7 @@ function Slider({ imgArr }) {
                             : (currentSlide - 2 === index) ? "slider_image_third slider_image_pre_pre"
                                 : (currentSlide + 1 === index) ? "slider_image_third slider_image_next"
                                     : (currentSlide + 2 === index) ? "slider_image_third slider_image_next_next"
-                                        : "slider_image"} style={{ backgroundImage: `url("` + process.env.REACT_APP_API_URL + item.file + `")`, backgroundSize: "cover" }} key={index} >
+                                        : "slider_image"} style={{ backgroundImage: `url("` + item + `")`, backgroundSize: "cover" }} key={index} >
                     </div>
                 ))}
             </div>
@@ -41,4 +41,4 @@ function Slider({ imgArr }) {
     );
 }
 
-export default Slider;
+export default SliderMain;

@@ -43,7 +43,7 @@ function CurrentExpertArticles({ expertId }) {
                     ))
                 }</div>
                 :
-                <p className="paragraph_text">У данного эксперта нету статей</p>
+                <p className="paragraph_text">У данного эксперта нет статей</p>
             }
         </section>
     )

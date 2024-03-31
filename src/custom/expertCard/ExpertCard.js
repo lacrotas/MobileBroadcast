@@ -53,10 +53,10 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
                         <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
                         </div>
                         <p className="expert_label paragraph_text">{name}</p>
-                        <div className="expert_container-location">
+                        {/* <div className="expert_container-location">
                             <img src={LocationImage} alt="location" />
                             <p className="location_paragraph paragraph_text">{(city) ? city.name : null}</p>
-                        </div>
+                        </div> */}
                         <div className="expert_container-stack">
                             {stack.map((technology, index) => (<p className={"stack_paragraph paragraph_text" + " stack_paragraph" + index} key={index}>#{technology}</p>))}
                         </div>

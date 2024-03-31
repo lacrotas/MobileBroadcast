@@ -4,8 +4,10 @@
     background-color: aliceblue;
     width: calc(80% - 80px);
     padding: 40px;
-    overflow: auto;
-
+    border-radius: 20px;
+    .expert_filter{
+        padding-top: 0;
+    }
     .grid_container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(620px, 1fr));
@@ -15,6 +17,18 @@
 
 @media screen and (max-width: 860px) {
     .meating_grid-modal {
+        .grid_container {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .meating_grid-modal {
+        width: calc(100% - 40px);
+        padding: 20px;
+        margin-left: 20px;
+        padding-top: 0px;
         .grid_container {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         }

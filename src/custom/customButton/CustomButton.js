@@ -41,9 +41,11 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
   }
 
   return (
-    <div className="custom_button" onClick={() => setIsOpen(!isOpen)} onMouseLeave={() => setIsOpen(false)}>
-      <img className="custom_image" src={SelectImage} alt="image" />
-      <p className="custom_text">{selectedValue}</p>
+    <div className="custom_button_container" onClick={() => setIsOpen(!isOpen)} onMouseLeave={() => setIsOpen(false)}>
+      <div className="custom_button">
+        <img className="custom_image" src={SelectImage} alt="image" />
+        <p className="custom_text">{selectedValue}</p>
+      </div>
       {isOpen && <div className="custom_button-container">
         <p className="custom_text" onClick={() => handleSet(defaultValue)}>{defaultValue}</p>
         {selectValues.map((item, index) => (

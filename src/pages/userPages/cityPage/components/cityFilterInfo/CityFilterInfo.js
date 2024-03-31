@@ -11,7 +11,7 @@ function CityFilterInfo({ setCountry, setCityName }) {
           <br /><br />Администратор - это главный двигатель филиала, он организовывает мероприятия и модерирует группу города в Телеграм.
         </p>
         <a href="https://docs.google.com/forms/d/1Oqt0y2dgP9NjVqxW3CBEaIWEPlZPKW1NmPHu_BuKYVA/viewform?edit_requested=true" target="_blank">
-          <button className="city_filter_button button">Подать заявление</button>
+          <button className="city_filter_button button">Создать сообщество</button>
         </a>
       </div>
       <div className="city_filter_buttons">
