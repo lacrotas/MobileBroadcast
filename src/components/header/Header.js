@@ -82,10 +82,10 @@ function Header({ setOpenModal }) {
                   onClick={() => setNavigate(3)}>Эксперты</p>
               </NavLink>
 
-              <NavLink to={MEATING_ROUTE}>
+              {/* <NavLink to={MEATING_ROUTE}>
                 <p className="navigation_item" style={{ fontWeight: (navigate === 4) ? 'bold' : 'normal' }}
                   onClick={() => setNavigate(4)}>Встречи</p>
-              </NavLink>
+              </NavLink> */}
             </nav>}
           {user.isAuth ?
             <button className="header_button button" onClick={() => handleLogOut()}>Выйти</button>
@@ -137,10 +137,10 @@ function Header({ setOpenModal }) {
                       onClick={() => setNavigate(3)}>Эксперты</p>
                   </NavLink>
 
-                  <NavLink to={MEATING_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  {/* <NavLink to={MEATING_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 4) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(4)}>Встречи</p>
-                  </NavLink>
+                  </NavLink> */}
                 </nav>
             }
             {user.isAuth ?
