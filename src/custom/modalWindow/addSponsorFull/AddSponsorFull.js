@@ -22,7 +22,7 @@ function AddSponsorFull() {
     }
     return (
         <div className="sponsor_statement">
-            <h3 className="authorizaton_label h3_text">Добавление спонсора</h3>
+            <h3 className="authorizaton_label h3_text">Добавление партнера</h3>
             <input type="text" className="expert_statement_input my_input" placeholder="Имя" value={name} onChange={(e) => setName(e.target.value)} />
             <input type="text" className="expert_statement_input my_input" placeholder="ссылка" value={link} onChange={(e) => setLink(e.target.value)} />
             <CustomInputFile handleImageChange={setImage} />

@@ -87,10 +87,9 @@ function Header({ setOpenModal }) {
                   onClick={() => setNavigate(4)}>Встречи</p>
               </NavLink> */}
             </nav>}
-          {user.isAuth ?
+          {user.isAuth &&
             <button className="header_button button" onClick={() => handleLogOut()}>Выйти</button>
-            :
-            <button className="header_button button" onClick={() => setOpenModal(true)}>Войти</button>
+            // <button className="header_button button" onClick={() => setOpenModal(true)}>Войти</button>
           }
         </div>
         <div className="header_container-small">
@@ -99,15 +98,15 @@ function Header({ setOpenModal }) {
             {
               user.isAuth ?
                 <nav className="container_navigation">
-                  <NavLink to={MAIN_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={MAIN_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 1) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(1)}>Главная</p>
                   </NavLink>
-                  <NavLink to={CITY_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={CITY_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 2) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(2)}>Сообщество</p>
                   </NavLink>
-                  <NavLink to={EXPERT_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={EXPERT_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 3) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(3)}>Эксперты</p>
                   </NavLink>
@@ -115,24 +114,24 @@ function Header({ setOpenModal }) {
                     <p className="navigation_item" style={{ fontWeight: (navigate === 4) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(4)}>Встречи</p>
                   </NavLink> */}
-                  <NavLink to={ADMIN_MAIN_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={ADMIN_MAIN_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 5) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(5)}>Заявления</p>
                   </NavLink>
                 </nav>
                 :
                 <nav className="container_navigation">
-                  <NavLink to={MAIN_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={MAIN_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 1) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(1)}>Главная</p>
                   </NavLink>
 
-                  <NavLink to={CITY_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={CITY_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 2) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(2)}>Сообщество</p>
                   </NavLink>
 
-                  <NavLink to={EXPERT_ROUTE} onClick={()=>setBurgerOpen(!burgerOpen)}>
+                  <NavLink to={EXPERT_ROUTE} onClick={() => setBurgerOpen(!burgerOpen)}>
                     <p className="navigation_item" style={{ fontWeight: (navigate === 3) ? 'bold' : 'normal' }}
                       onClick={() => setNavigate(3)}>Эксперты</p>
                   </NavLink>
@@ -143,11 +142,14 @@ function Header({ setOpenModal }) {
                   </NavLink> */}
                 </nav>
             }
-            {user.isAuth ?
+            {user.isAuth &&
+              <button className="header_button button" onClick={() => handleLogOut()}>Выйти</button>
+            }
+            {/* {user.isAuth ?
               <button className="header_button button" onClick={() => handleLogOut()}>Выйти</button>
               :
               <button className="header_button button" onClick={() => setOpenModal(true)}>Войти</button>
-            }
+            } */}
           </div>
         </div>
       </>

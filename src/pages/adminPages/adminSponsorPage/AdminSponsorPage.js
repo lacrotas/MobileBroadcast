@@ -19,7 +19,7 @@ export default function AdminSponsorPage() {
                     <SponsorCard key={index} title={item.name} description={item.link} id={item.id} image={item.image} />
                 )
             }
-            <button className="button" onClick={() => setIsmodalOpen(true)}>Добавить спонсора</button>
+            <button className="button" onClick={() => setIsmodalOpen(true)}>Добавить партнера</button>
             {isModalOpen &&
                 <ModalWindow type={'addSponsorFull'} closeModal={setIsmodalOpen} />
             }

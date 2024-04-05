@@ -4,6 +4,7 @@ export const EXPERT_ROUTE = '/expert';
 export const USER_ROUTE = '/user';
 export const CREATOR_ROUTE = '/creator';
 export const MEATING_ROUTE = '/meating';
+export const LOGIN_ROUTE = '/login';
 
 /* admin */
 export const ADMIN_MAIN_ROUTE = '/admin';

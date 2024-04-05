@@ -5,7 +5,7 @@ import { deleteOneSponsorPanel } from "../../../../http/sponsorPanelApi";
 
 function SponsorCard({ title, description, id, image }) {
     function deleteCard() {
-        const result = prompt("Вы хотите удалить данного спонсора? Если уверены введите слово \"да\"", []);
+        const result = prompt("Вы хотите удалить данного партнера? Если уверены введите слово \"да\"", []);
         if (result === "да") {
             try {
                 deleteOneSponsorPanel(id);

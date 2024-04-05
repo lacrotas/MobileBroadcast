@@ -4,7 +4,7 @@ import {
     MEATING_ROUTE, EXPERT_ADMIN_ROUTE, ADMIN_MAIN_ROUTE,
     CITY_ADMIN_ROUTE, MEATING_ADMIN_ROUTE, ADD_ADMIN_ROUTE,
     MEATING_ADD_ADMIN_ROUTE, COUNTRY_ADMIN_ROUTE, SPONSOR_STATEMENT,
-    ADMIN_SPONSOR
+    ADMIN_SPONSOR, LOGIN_ROUTE
 } from './Const';
 import CurrentCityPage from "../userPages/cityPage/CurrentCityPage";
 import CityChoosePage from "../userPages/cityPage/CityChoosePage";
@@ -20,6 +20,7 @@ import AdminCurrentExpertInfo from "../adminPages/adminCurrentExpertPage/Current
 import CurrentAdminCityPage from "../adminPages/adminCityPage/CurrentAdminCityPage";
 import AdminStatementPage from "../adminPages/adminStatementPage/AdminStatementPage";
 import AdminSponsorPage from "../adminPages/adminSponsorPage/AdminSponsorPage";
+import LoginPage from "../userPages/loginPage/LoginPage";
 
 export const publicRoutes = [
     {
@@ -45,6 +46,10 @@ export const publicRoutes = [
     {
         path: MEATING_ROUTE,
         Component: MeatingPage
+    },
+    {
+        path: LOGIN_ROUTE,
+        Component: LoginPage
     }
 ];
 

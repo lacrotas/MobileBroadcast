@@ -5,12 +5,14 @@
     padding: 30px;
     border-radius: 30px;
     background-color: #F9F9F9;
-    .card_image-sponsor{
+
+    .card_image-sponsor {
         margin-top: 20px;
         width: 200px;
         margin-left: 70px;
         max-height: 120px;
     }
+
     &:hover {
         cursor: pointer;
         background-color: #802AEA;
@@ -26,7 +28,8 @@
 
         .card_image {
             filter: invert(1);
-            &:hover{
+
+            &:hover {
                 transform: scale(1.1);
             }
         }
@@ -34,6 +37,9 @@
 
     .card_description {
         margin-top: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .card_container {

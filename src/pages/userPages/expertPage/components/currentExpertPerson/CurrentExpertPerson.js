@@ -15,7 +15,6 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
     useEffect(() => {
         fetchOneCity(cityId).then(data => setCity(data));
     }, []);
-    console.log(linkGitHub);
     function isValidUrl(string) {
         try {
             new URL(string);
@@ -62,7 +61,7 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
                     <img className="expert_person_image" src={(image !== null) ? process.env.REACT_APP_API_URL + image : avatar} alt="logo" />
                 </div>
             </div>
-            <p className="expert_person_paragraph_text paragraph_text">{aboutText}</p>
+            <pre className="expert_person_paragraph_text paragraph_text">{aboutText}</pre>
         </section>
     );
 }
