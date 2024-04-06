@@ -27,7 +27,7 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
     }
 
     function checkCity() {
-        if (((cityFilter === "" || !cityFilter) || cityFilter === city.name) && checkTechnology() && checkName()) {
+        if (((cityFilter === "" || !cityFilter) || city.name.toLowerCase().includes(cityFilter.toLowerCase())) && checkTechnology() && checkName()) {
             return true;
         } else {
             return false;

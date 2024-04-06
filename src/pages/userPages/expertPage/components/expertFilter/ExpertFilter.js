@@ -15,8 +15,8 @@ function ExpertFilter({ setCityFilter, setTehnologyFilter, setNameFilter }) {
                 </a>
             </div>
             <div className="expert_filter_buttons">
-                <CustomButton setValue={setCityFilter} type="city" defaultValue="Город" />
                 <CustomButton setValue={setTehnologyFilter} type="tehnology" defaultValue="Технология" />
+                <CustomInput pl={"Поиск по городам"} setText={setCityFilter} />
                 <CustomInput pl={"Поиск по ФИО"} setText={setNameFilter} />
             </div>
         </section >

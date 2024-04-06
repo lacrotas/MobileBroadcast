@@ -29,8 +29,8 @@ export default function AdminExpertPage() {
                             <p className="expert_filter_paragraph paragraph_text">На данной странице отображены все эксперты Mobile Broadcast: вы можете добавлять, редактировать и удалять экспертов</p>
                         </div>
                         <div className="expert_filter_buttons">
-                            <CustomButton setValue={setCityFilter} type="city" defaultValue="Город" />
                             <CustomButton setValue={setTehnologyFilter} type="tehnology" defaultValue="Технология" />
+                            <CustomInput pl={"Поиск по городам"} setText={setCityFilter} />
                             <CustomInput pl={"Поиск по ФИО"} setText={setNameFilter} />
                         </div>
                     </section>

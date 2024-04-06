@@ -14,6 +14,7 @@
         border: 1px solid #802AEA;
         border-radius: 30px;
         font-family: "Jura_med";
+        width: 215px;
 
         &:focus {
             outline: 2px solid #802AEA;
@@ -34,7 +35,7 @@
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 950px) {
     .custom_input-container .custom_input {
         font-size: 20px;
         padding: 5px 5px 5px 45px;

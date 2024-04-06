@@ -31,8 +31,8 @@ function Sponsors() {
             )}
           </div>
           <div className="sponsord_add_container">
-            <h3 className="sponsors_label h3_text">Спонсоры</h3>
-            <p className="sponsors_pagragraph paragraph_text">Если вы хотите стать спонсором сообщества, свяжитесь с нами, мы обсудим детали. </p>
+            <h3 className="sponsors_label h3_text">Партнёры</h3>
+            <p className="sponsors_pagragraph paragraph_text">Если вы хотите стать партнером сообщества, свяжитесь с нами, мы обсудим детали. </p>
             <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScfD4eQ1IIWhBSXZr87dorYbW-Em9Z8wTpD2UEEQxjVj-eZ0w/viewform"}>
               <button className="sponsors_button button">Оставить заявление</button>
             </a>
@@ -40,8 +40,8 @@ function Sponsors() {
         </div>
         :
         <>
-          <h3 className="sponsors_label h3_text">Спонсоры</h3>
-          <p className="sponsors_pagragraph paragraph_text">Если вы хотите стать спонсором сообщества, свяжитесь с нами, мы обсудим детали. </p>
+          <h3 className="sponsors_label h3_text">Партнёры</h3>
+          <p className="sponsors_pagragraph paragraph_text">Если вы хотите стать партнером сообщества, свяжитесь с нами, мы обсудим детали. </p>
           <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScfD4eQ1IIWhBSXZr87dorYbW-Em9Z8wTpD2UEEQxjVj-eZ0w/viewform"}>
             <button className="sponsors_button button">Оставить заявление</button>
           </a>

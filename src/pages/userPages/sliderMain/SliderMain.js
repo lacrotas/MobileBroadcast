@@ -28,7 +28,7 @@ function SliderMain({ imgArr }) {
                             : (currentSlide - 2 === index) ? "slider_image_third slider_image_pre_pre"
                                 : (currentSlide + 1 === index) ? "slider_image_third slider_image_next"
                                     : (currentSlide + 2 === index) ? "slider_image_third slider_image_next_next"
-                                        : "slider_image"} style={{ backgroundImage: `url("` + item + `")`, backgroundSize: "cover" }} key={index} >
+                                        : "slider_image"} style={{ backgroundImage: `url("` + item + `")`, backgroundSize: "cover", backgroundPosition: "bottom" }} key={index} >
                     </div>
                 ))}
             </div>
