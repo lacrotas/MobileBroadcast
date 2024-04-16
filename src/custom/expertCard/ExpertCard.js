@@ -10,9 +10,9 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
     const [city, setCity] = useState();
     useEffect(() => {
         if (cityWithoutList) {
-            setCity(cityWithoutList);
+            setCity({ name: cityWithoutList });
         } else {
-            fetchOneCity(cityId).then(data => setCity(data.name));
+            fetchOneCity(cityId).then(data => setCity(data));
         }
     }, []);
 
@@ -31,7 +31,7 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
     }
 
     function checkCity() {
-        if (((cityFilter === "" || !cityFilter) || city.toLowerCase().includes(cityFilter.toLowerCase())) && checkTechnology() && checkName()) {
+        if (((cityFilter === "" || !cityFilter) || city.name.toLowerCase().includes(cityFilter.toLowerCase())) && checkTechnology() && checkName()) {
             return true;
         } else {
             return false;
