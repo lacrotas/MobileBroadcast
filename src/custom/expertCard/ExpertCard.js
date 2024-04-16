@@ -12,7 +12,7 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
         if (cityWithoutList) {
             setCity(cityWithoutList);
         } else {
-            fetchOneCity(cityId).then(data => setCity(data));
+            fetchOneCity(cityId).then(data => setCity(data.name));
         }
     }, []);
 
@@ -31,7 +31,7 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
     }
 
     function checkCity() {
-        if (((cityFilter === "" || !cityFilter) || city.name.toLowerCase().includes(cityFilter.toLowerCase())) && checkTechnology() && checkName()) {
+        if (((cityFilter === "" || !cityFilter) || city.toLowerCase().includes(cityFilter.toLowerCase())) && checkTechnology() && checkName()) {
             return true;
         } else {
             return false;
