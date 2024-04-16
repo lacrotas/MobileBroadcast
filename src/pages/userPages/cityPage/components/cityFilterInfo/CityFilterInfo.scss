@@ -21,6 +21,9 @@
         display: flex;
         gap: 20px;
     }
+    .custom_input-container .custom_input{
+        width: auto;
+    }
 }
 
 @media screen and (max-width: 1300px) {

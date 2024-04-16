@@ -5,11 +5,15 @@ import { EXPERT_ROUTE, EXPERT_ADMIN_ROUTE } from "../../pages/appRouter/Const";
 import { fetchOneCity } from "../../http/cityApi";
 import { useState, useEffect } from "react";
 
-function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter, tehnologyFilter, nameFilter }) {
+function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter, tehnologyFilter, nameFilter, cityWithoutList }) {
     const stack = technologies.split("/");
     const [city, setCity] = useState();
     useEffect(() => {
-        fetchOneCity(cityId).then(data => setCity(data));
+        if (cityWithoutList) {
+            setCity(cityWithoutList);
+        } else {
+            fetchOneCity(cityId).then(data => setCity(data));
+        }
     }, []);
 
     function checkTechnology() {
@@ -50,7 +54,7 @@ function ExpertCard({ isAdmin, id, name, image, technologies, cityId, cityFilter
                 <NavLink to={(isAdmin) ? EXPERT_ADMIN_ROUTE + "/" + id : EXPERT_ROUTE + "/" + id}>
                     <section className="expert">
                         <div className="expert_image_container">
-                        <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
+                            <img className="expert_image" src={process.env.REACT_APP_API_URL + image} alt="expert" />
                         </div>
                         <p className="expert_label paragraph_text">{name}</p>
                         {/* <div className="expert_container-location">

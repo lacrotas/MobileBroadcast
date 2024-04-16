@@ -8,12 +8,16 @@ import MailImage from "../../../../../assets/images/mail_circle.svg";
 import GitHubImage from "../../../../../assets/images/github.svg";
 import LinkedInImage from "../../../../../assets/images/linkedIn.svg";
 
-function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, linkGitHub, linkLinkedIn }) {
+function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, linkGitHub, linkLinkedIn, cityWithoutList }) {
     const stack = technologies.split("/");
     const [city, setCity] = useState();
     const avatar = (sex === "men") ? MenAvatar : WomenAvatar;
     useEffect(() => {
-        fetchOneCity(cityId).then(data => setCity(data));
+        if (cityWithoutList) {
+            setCity(cityWithoutList);
+        }else{
+            fetchOneCity(cityId).then(data => setCity(data));
+        }
     }, []);
     function isValidUrl(string) {
         try {
@@ -33,7 +37,7 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
                             <p className="paragraph_text" key={index}>{item}</p>
                         ))}
                     </div>
-                    <p className="paragraph_text">{city ? city.name : null}</p>
+                    <p className="paragraph_text">{city ? city.name || city : null}</p>
                     <div className="expert_person_container">
                         {linkTelegram ?
                             <a target="blank" href={isValidUrl(linkTelegram) ? linkTelegram : ""}>

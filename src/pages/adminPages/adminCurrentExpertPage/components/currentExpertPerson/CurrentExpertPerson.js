@@ -7,10 +7,11 @@ import CustomButton from "../../../../../custom/customButton/CustomButton";
 import CustomInputFile from "../../../../../custom/customInputFile/CustomInputFile";
 import DeleteImage from "../../../../../assets/images/delete.svg";
 
-function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues, deleteExpert, updateExpert, linkGitHab, linkLinkedIn }) {
+function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId, linkTelegram, linkMail, setCurrentExpertPersonValues, deleteExpert, updateExpert, linkGitHab, linkLinkedIn, cityWithoutList }) {
     const [stackValue, setStackValue] = useState(technologies.split("/"));
     const avatar = (sex === "men") ? MenAvatar : WomenAvatar;
     /* values */
+    const [cityWithoutListValue, setCityWithoutListValue] = useState(cityWithoutList || "");
     const [nameValue, setNameValue] = useState(name);
     const [telegram, setTelegram] = useState(linkTelegram);
     const [mail, setMail] = useState(linkMail);
@@ -21,9 +22,12 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
     const [sexValue, setSex] = useState(sex);
     const [imageValue, setImageValue] = useState(process.env.REACT_APP_API_URL + image);
     const [aboutTextValue, setAboutTextValue] = useState(aboutText);
-
     useEffect(() => {
-        fetchOneCity(cityId).then(data => setCity(data));
+        if (cityWithoutList) {
+
+        } else {
+            fetchOneCity(cityId).then(data => setCity(data));
+        }
     }, []);
 
     const removeItem = (indexToRemove) => {
@@ -61,19 +65,21 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
         setCurrentExpertPersonValues({
             name: nameValue, sex: sexValue, aboutText: aboutTextValue,
             image: selectedImage, technologies: stackValue, cityId: city.id,
-            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn
+            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn,
+            cityWithoutList: cityWithoutListValue
         });
     }
     function update() {
         updateExpert({
             name: nameValue, sex: sexValue, aboutText: aboutTextValue,
-            image: selectedImage, technologies: stackValue, cityId: city.id,
-            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn
+            image: selectedImage, technologies: stackValue, cityId: city,
+            linkTelegram: telegram, linkMail: mail, linkGitHab: gitHib, linkLinkedIn: linkedIn,
+            cityWithoutList: cityWithoutListValue
         });
     }
     return (
         <>
-            <section className="expert_person" onChange={() => setData()}>
+            <section className="expert_person">
                 <div className="expert_person_container">
                     <div className="expert_person-left">
                         <input className="h2_text my_input" placeholder="ФИО" type="text" value={nameValue} onChange={(e) => { setNameValue(e.target.value) }} />
@@ -87,7 +93,10 @@ function CurrentExpertPerson({ name, image, aboutText, sex, technologies, cityId
                             }
                             <button className="button" onClick={() => setStackValue([...stackValue, ""])}>Добавить технологию</button>
                         </div>
-                        <CustomButton choosenValue={city} isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />
+                        <input className="h2_text my_input" placeholder="Город без списка" type="text" value={cityWithoutListValue} onChange={(e) => { setCityWithoutListValue(e.target.value) }} />
+                        {cityId ?
+                            <CustomButton choosenValue={cityId} isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />
+                            : <CustomButton isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />}
                         <div className="expert_person_container">
                             <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />
                             <input className="paragraph_text my_input" type="text" value={mail} onChange={(e) => setMail(e.target.value)} placeholder="mail" />

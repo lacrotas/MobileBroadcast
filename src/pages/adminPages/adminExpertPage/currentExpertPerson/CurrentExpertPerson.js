@@ -11,6 +11,7 @@ import CustomButton from "../../../../custom/customButton/CustomButton";
 function CurrentExpertPerson({ setBack }) {
     const [image, setImage] = useState(MenAvatar);
     const [city, setCity] = useState();
+    const [cityWithoutList, setCityWithoutList] = useState();
     /*values */
     const [name, setName] = useState();
     const [sex, setSex] = useState("men");
@@ -59,13 +60,17 @@ function CurrentExpertPerson({ setBack }) {
                 stackTehnology += "/";
             }
         }
-        if (name && aboutText && stackTehnology && city) {
+        if (name && aboutText && stackTehnology && (city || cityWithoutList)) {
             const formData = new FormData();
             formData.append('name', name);
             formData.append('aboutText', aboutText);
             formData.append('image', selectedImage);
             formData.append('technologies', stackTehnology);
-            formData.append('cityId', city.id);
+            if (city) {
+                formData.append('cityId', city.id);
+            } else {
+                formData.append('cityWithoutList', cityWithoutList)
+            }
             if (telegram) {
                 formData.append('linkTelegram', telegram);
             }
@@ -103,6 +108,7 @@ function CurrentExpertPerson({ setBack }) {
                             }
                             <button className="button" onClick={() => setStack([...stack, ""])}>Добавить технологию</button>
                         </div>
+                        <input className="h2_text my_input" placeholder="Город без списка" type="text" value={cityWithoutList} onChange={(e) => { setCityWithoutList(e.target.value) }} />
                         <CustomButton isFullObject={true} setValue={setCity} type="city" defaultValue="Город" />
                         <div className="expert_person_container">
                             <input className="paragraph_text my_input" type="text" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="telegram" />

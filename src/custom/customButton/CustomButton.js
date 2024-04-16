@@ -1,19 +1,22 @@
 import "./CustomButton.scss";
 import SelectImage from "../../assets/images/select.svg";
 import { useState, useEffect } from "react";
-import { fetchCityes, fetchCountries } from "../../http/cityApi";
+import { fetchCityes, fetchCountries, fetchOneCity } from "../../http/cityApi";
 
 function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue }) {
   const [selectedValue, setSelectedValue] = useState(defaultValue);
   const [isOpen, setIsOpen] = useState(false);
   const [selectValues, setSelectValues] = useState();
 
+  const [myChoosenValue, setMyChoosenValue] = useState();
+  const [isValueWasChanged, setIsValueWasChanged] = useState(false);
+
   const [valueIndex, setValueIndex] = useState(-1);
   useEffect(() => {
     if (type === "city") {
       fetchCityes().then(data => setSelectValues(data));
       if (choosenValue) {
-        setSelectValues(choosenValue.name);
+        fetchOneCity(choosenValue).then(data => setMyChoosenValue(data.name));
       }
     } else if (type === "tehnology") {
       setSelectValues([
@@ -28,6 +31,7 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
   function handleSet(item, valueIndex) {
     setSelectedValue(item);
     setValueIndex(valueIndex);
+    setIsValueWasChanged(true);
     if (item === defaultValue) {
       setValue(undefined);
     } else {
@@ -37,6 +41,7 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
   function handleSetObj(item, valueIndex) {
     setSelectedValue(item.name);
     setValueIndex(valueIndex);
+    setIsValueWasChanged(true);
     if (item === defaultValue) {
       setValue(undefined);
     } else {
@@ -48,7 +53,7 @@ function CustomButton({ setValue, defaultValue, type, isFullObject, choosenValue
     <div className="custom_button_container" onClick={() => setIsOpen(!isOpen)} onMouseLeave={() => setIsOpen(false)}>
       <div className="custom_button">
         <img className="custom_image" src={SelectImage} alt="image" />
-        <p className="custom_text">{selectedValue}</p>
+        <p className="custom_text">{(!isValueWasChanged && choosenValue) ? myChoosenValue : selectedValue}</p>
       </div>
       {isOpen && <div className="custom_button-container">
         {!(valueIndex == -1) &&

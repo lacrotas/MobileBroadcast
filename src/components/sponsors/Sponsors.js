@@ -25,7 +25,7 @@ function Sponsors() {
         <div className="sponsors_grid">
           <div className="sponsor_images_container">
             {allSponsors.map((item, index) =>
-              <a target="blank" href={isValidUrl() ? item.link : ""} >
+              <a target="blank" href={isValidUrl(item.link) ? item.link : ""} >
                 <img className="sponsor_image" key={index} src={process.env.REACT_APP_API_URL + item.image} alt="logo" />
               </a>
             )}

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory  } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { fetchOneExpert, updateOneExpert, deleteOneExpert } from "../../../http/expertApi";
 import CurrentExpertPerson from "./components/currentExpertPerson/CurrentExpertPerson";
 import CurrentExpertMeatings from "./components/currentExpertMeatings/CurrentExpertMeatings";
 import CurrentExpertArticles from "./components/currentExpertArticles/CurrentExpertArticles";
 import "./CurrentExpertInfo.scss";
-import {EXPERT_ADMIN_ROUTE} from '../../appRouter/Const';
+import { EXPERT_ADMIN_ROUTE } from '../../appRouter/Const';
 export default function AdminCurrentExpertInfo() {
     const [expert, setExperts] = useState();
     const { id } = useParams();
@@ -35,7 +35,13 @@ export default function AdminCurrentExpertInfo() {
         formData.append('aboutText', currentExpert.aboutText);
         formData.append('image', currentExpert.image);
         formData.append('technologies', currentExpert.technologies.join('/'));
-        formData.append('cityId', currentExpert.cityId);
+        if (currentExpert.cityId) {
+            formData.append('cityId', currentExpert.cityId.id);
+            formData.append('cityWithoutList', undefined);
+        } else {
+            formData.append('cityWithoutList', currentExpert.cityWithoutList);
+            formData.append('cityId', undefined);
+        }
         if (currentExpert.linkTelegram) {
             formData.append('linkTelegram', currentExpert.linkTelegram);
         }
@@ -50,6 +56,7 @@ export default function AdminCurrentExpertInfo() {
         }
         updateOneExpert(expert.id, formData);
         alert("Эксперт отредактирован");
+
         window.location.reload();
     }
     function deleteExpert() {
@@ -66,9 +73,9 @@ export default function AdminCurrentExpertInfo() {
                 <>
                     <CurrentExpertPerson name={expert.name} image={expert.image} aboutText={expert.aboutText}
                         sex={expert.sex} technologies={expert.technologies} cityId={expert.cityId}
-                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail} 
+                        linkTelegram={expert.linkTelegram} linkMail={expert.linkMail}
                         setCurrentExpertPersonValues={setCurrentExpertPersonValues} updateExpert={updateExpert} deleteExpert={deleteExpert}
-                        linkGitHab={expert.linkGitHab} linkLinkedIn={expert.linkLinkedIn} />
+                        linkGitHab={expert.linkGitHab} linkLinkedIn={expert.linkLinkedIn} cityWithoutList={expert.cityWithoutList} />
                     <CurrentExpertArticles expertId={expert.id} />
                     <CurrentExpertMeatings id={expert.meatingId} expertImage={expert.image} expertId={expert.id} />
                 </>
